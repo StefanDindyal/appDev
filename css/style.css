@@ -32,6 +32,7 @@ body {
 	padding: 20px;
 	border: 1px solid #010101;
 	overflow: hidden;
+	min-height: 600px;
 }
 #app button {
 	cursor: pointer;
@@ -60,6 +61,7 @@ body {
 	padding: 5px 10px;
 	border: 1px solid grey;
 	text-align: right;
+	margin-bottom: 20px;
 }
 #app #cart .total {
 	padding: 15px 10px;
@@ -76,6 +78,7 @@ body {
 }
 #app #cart .item:last-child {
 	border-bottom: 0;
+	margin-bottom: 20px
 }
 #app #cart .item h3 {
 	margin: 5px 0;

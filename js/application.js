@@ -109,8 +109,8 @@
 					for(var i = 0; i < cart.length; i++){
 						this.send(cart[i]);
 					}
-					this.updateCart();
 				}
+				this.updateCart();
 			},
 			send: function(item){
 				for(var i = 0; i < products.length; i++){
