@@ -31,4 +31,52 @@ body {
 	margin: 40px auto;
 	padding: 20px;
 	border: 1px solid #010101;
+	overflow: hidden;
+}
+#app button {
+	cursor: pointer;
+}
+#app .products {
+	width: 70%;
+	overflow: hidden;
+	padding-right: 20px;
+}
+#app .product {
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid grey;
+}
+#app .product h3 {
+	margin: 5px 0;
+}
+#app #cart {
+	width: 30%;
+	float: right;
+	margin: 10px 0;
+	padding: 10px;
+	border: 1px solid grey;
+}
+#app #cart .count {
+	padding: 5px 10px;
+	border: 1px solid grey;
+	text-align: right;
+}
+#app #cart .total {
+	padding: 15px 10px;
+	border: 1px solid grey;
+	text-align: right;	
+}
+#app #cart ul {
+	list-style: none;
+}
+#app #cart .item {
+	border-bottom: 1px solid grey;
+	padding: 10px;
+	margin: 5px 0;
+}
+#app #cart .item:last-child {
+	border-bottom: 0;
+}
+#app #cart .item h3 {
+	margin: 5px 0;
 }
