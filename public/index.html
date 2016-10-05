@@ -10,7 +10,33 @@
     </head>
     <body>
 
-        <div id="app"></div>
+        <div id="app">
+          <div id="characters">
+            <h1>All Characters</h1>
+            <ul class="list"></ul>
+            <div class="add">
+              <form>
+                <h2>Add New Character</h2>
+                <div class="field">
+                  <input type="text" name="firstname" value="" placeholder="First Name">
+                </div>
+                <div class="field">
+                  <input type="text" name="lastname" value="" placeholder="Last Name">
+                </div>
+                <div class="field">
+                  <input type="text" name="campaign" value="" placeholder="Campaign">
+                </div>
+                <div class="field">
+                  <input type="file" name="avatar" accept="image/*">
+                </div>
+                <div class="field">
+                  <input type="submit" name="submit" value="Submit">
+                </div>
+              </form>
+              <div class="view"></div>
+            </div>
+          </div>
+        </div>
 
         <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
         <script>
