@@ -9,23 +9,7 @@
 	
 	// Update view when database is updated
 	characters.on('value', function(snapshot) {
-		var str = '';
-		snapshot.forEach(function(data){
-			var avatar = data.child('avatar').val();
-			var firstname = data.child('firstname').val();
-			var lastname = data.child('lastname').val();
-			var campaign = data.child('campaign').val();
-			str += '<li class="char" data-key="'+data.key+'">';
-			str += '<div class="edge"><img src="'+avatar+'"/></div>';
-			str += '<h3>'+firstname+'</h3>';
-			str += '<h4>'+lastname+'</h4>';
-			str += '<div class="info">';
-			str += '<div class="action"><a href="#" class="edit">edit</a>';
-			str += '&nbsp;|&nbsp;';
-			str += '<a href="#" class="delete">delete</a></div><span>'+campaign+'</span></div>';
-			str += '</li>';
-		});
-		$('#characters .list').html(str);
+		$('#characters .list').html(charIntro(snapshot));
 	});
 
 	// Form submit data to database and upload avatar image
@@ -121,13 +105,14 @@
 		var name = firstname+' '+lastname;
 		var httpsReference = storage.refFromURL(avatar);				
 		if(sure == false){
-			$('body').append('<div id="sure"><div class="inner"><p>Are you sure you want to delete <strong>'+name+'</strong>?</p><div class="action"><a href="#"class="delete confirm">delete</a></div></div></div>');
+			$('body').append('<div id="sure"><div class="inner"><p>Are you sure you want to delete<br><strong>'+name+'</strong>?</p><div class="action"><a href="#"class="delete confirm">delete</a></div></div></div>');
 			$('body #sure').fadeIn(300);
 			return false;
 		} else {
 			$('body #sure').fadeOut(300, function(){
 				$(this).remove();	
 			});
+			sure = false;
 		}
 		// Delete avatar image		
 		httpsReference.delete().then(function(){
@@ -142,6 +127,17 @@
 			console.log('Error updating', error);
 		});		
 		e.preventDefault();
+	});
+
+	// More information about character
+	$(document).on('click', '.char h3, .char h4, .char .edge', function(){
+		console.log('learn more');
+		$('#view').slideDown(300);
+	});
+
+	$(document).on('click', '#view .close', function(){
+		console.log('closed');
+		$('#view').slideUp(300);
 	});
 
 	// Loading bar
@@ -208,6 +204,27 @@
 		  var downloadURL = uploadTask.snapshot.downloadURL;		  
 		});
 		return uploadTask;
+	}
+
+	// Show Character intro
+	function charIntro(snapshot){
+		var str = '';
+		snapshot.forEach(function(data){
+			var avatar = data.child('avatar').val();
+			var firstname = data.child('firstname').val();
+			var lastname = data.child('lastname').val();
+			var campaign = data.child('campaign').val();
+			str += '<li class="char" data-key="'+data.key+'">';
+			str += '<div class="edge"><img src="'+avatar+'"/></div>';
+			str += '<h3>'+firstname+'</h3>';
+			str += '<h4>'+lastname+'</h4>';
+			str += '<div class="info">';
+			str += '<div class="action"><a href="#" class="edit">edit</a>';
+			str += '&nbsp;|&nbsp;';
+			str += '<a href="#" class="delete">delete</a></div><span>'+campaign+'</span></div>';
+			str += '</li>';
+		});
+		return str;
 	}
 
 	char = {
