@@ -6,6 +6,7 @@
 	var storage = firebase.storage();
 	var storageRef = storage.ref();
 	var characters = database.ref('characters');
+	var stats = database.ref('stats');
 	
 	// Update view when database is updated
 	characters.on('value', function(snapshot) {
@@ -138,13 +139,78 @@
 
 	// More information about character
 	$(document).on('click', '.char h3, .char h4, .char .edge', function(){
+		var char = $(this).parents('.char').attr('data-key');
+		var basic = {};
+		characters.child(char).once('value', function(snapshot){
+			var img = snapshot.child('avatar').val();
+			var firstname = snapshot.child('firstname').val();
+			var lastname = snapshot.child('lastname').val();
+			var campaign = snapshot.child('campaign').val();
+			var name = firstname + ' ' + lastname;
+			var str = '';
+			str += '<div class="basic" data-key="'+char+'">';
+			str += '<div class="pic">';
+			str += '<img src="'+img+'"/>';
+			str += '</div>';
+			str += '<div class="name">'+name+'</div>';
+			str += '<div class="campaign">'+campaign+'</div>';
+			str += '<div class="add"><a href="#">Add Info</a></div>';
+			str += '</div>';
+			$('#view .contents').append(str);
+		});
+
+		stats.once('value', function(snapshot){
+			console.log(snapshot.val());
+			if(snapshot.val() != null){
+				$('#view .contents .add').hide();
+			}
+		});
+
 		console.log('learn more');
 		$('#view').slideDown(300);
 	});
 
 	$(document).on('click', '#view .close', function(){
-		console.log('closed');
-		$('#view').slideUp(300);
+		console.log('closed');		
+		$('#view').slideUp(300, function(){
+			$('#view .contents .basic').remove();
+		});
+	});
+
+	var nah = false;
+	$(document).on('click', '#view .add', function(e){
+		e.preventDefault();
+		console.log('adding stats');		
+		var str = '';
+		str += '<form>';
+		str += '<div><label>Class</label><input type="text" name="class"></div>';
+		str += '<div><label>Level</label><input type="text" name="level"></div>';
+		str += '<div><label>Race</label><input type="text" name="race"></div>';
+		str += '<div><label>Size</label><input type="text" name="size"></div>';
+		str += '<div><label>Gender</label><input type="text" name="gender"></div>';
+		str += '<div><label>Alignment</label><input type="text" name="alignment"></div>';
+		str += '<div><label>Height</label><input type="text" name="height"></div>';
+		str += '<div><label>Weight</label><input type="text" name="weight"></div>';
+		str += '<div><label>HP</label><input type="text" name="hp"></div>';		
+		if(nah == false){
+			$('.basic').append(str);
+			$('#view .add a').text('Never mind');
+			nah = true;
+		} else {
+			$('.basic form').remove();
+			$('#view .add a').text('Add Info');
+			nah = false;
+		}	
+	});
+
+	$(document).on('blur', '#view .info input', function(e){
+		e.preventDefault();
+		var val = $(this).val();
+		var name = $(this).attr('name');
+		var key = $(this).parents('.basic').attr('data-key');
+		var value = {name: val};
+		console.log('adding stats'); 
+		updateStatData(key, value);
 	});
 
 	// Loading bar
@@ -169,6 +235,10 @@
 	function updateCharData(charId, value) {
 		return firebase.database().ref('characters/' + charId).update(value);
 	}
+
+	function updateStatData(charId, value) {
+		return firebase.database().ref('stats/' + charId).update(value);
+	}	
 
 	// Remove from database function
 	function removeCharData(charId) {
@@ -224,7 +294,12 @@
 			str += '<li class="char" data-key="'+data.key+'"><div class="inner">';
 			str += '<div class="edge"><img src="'+avatar+'"/></div>';
 			str += '<h3>'+firstname+'</h3>';
-			str += '<h4>'+lastname+'</h4>';
+			console.log(lastname);
+			if(lastname == ' ' || !lastname){
+				str += '<h4>&nbsp;</h4>';
+			} else {
+				str += '<h4>'+lastname+'</h4>';
+			}
 			str += '<div class="info">';
 			str += '<div class="action"><a href="#" class="edit">edit</a>';
 			str += '&nbsp;|&nbsp;';

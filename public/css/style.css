@@ -41,11 +41,12 @@ body {
 	background-color: #08090e;
 	box-shadow: inset 0 0 20px rgba(0,0,0,0.85);
 }
-#app h1 {
-	padding: 5px 10px;
-	background-color: rgba(255,255,255,0.85);
+h1 {
+	padding: 0px;
+	color: #fff;
 	border-radius: 5px;
-	border: 1px solid;
+	border: 1px solid transparent;
+	margin: 0 10px;
 }
 #characters .list {
 	margin-bottom: 40px;
@@ -156,8 +157,10 @@ body {
 }
 form {
 	max-width: 320px;
+	margin: 0 10px;
 }
-form h2 {
+form h1 {
+	margin: 0;
 	margin-bottom: 10px;
 }
 form input {
@@ -191,14 +194,21 @@ form .upload {
 	padding: 10px;
 	background-color: rgba(255,255,255,0.85);
 }
+form label {
+	cursor: pointer;
+}
 form input[type="file"] {
 	height: auto;
 	padding: 10px;
+	font-weight: normal;
+	font-size: 14px;
+	cursor: pointer;
 }
 form input[type="submit"] {
 	color: #fff;
 	background-color: #262626;
 	margin-top: 10px;
+	cursor: pointer;
 }
 #view {
 	position: fixed;
@@ -206,7 +216,7 @@ form input[type="submit"] {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: white;
+	background-color: #f1f1f1;
 	display: none;
 }
 #view .close {
@@ -216,10 +226,62 @@ form input[type="submit"] {
 	font-weight: bold;
 	padding: 10px;
 }
+#view .contents {
+	margin: 10px auto;
+	padding: 10px;
+	max-width: 720px;
+	border: 1px solid;
+}
+#view .contents .basic {
+	overflow: hidden;
+}
+#view .contents .pic {
+	max-width: 250px;
+	float: left;
+	margin-right: 20px;	 
+}
+#view .contents .pic img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+#view .contents .name {
+	padding-top: 20px;
+	font-size: 24px;
+	font-weight: bold;
+}
+#view .contents .campaign {
+	font-size: 18px;
+}
+#view .contents .add {
+	padding-top: 10px;
+	color: #666;
+}
+#view .contents .add a {
+	color: #666;
+	font-size: 14px;	
+}
+#view form {
+	max-width: none;
+	padding: 10px 0;
+	overflow: hidden;
+}
+#view form label {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 14px;
+	font-size: 14px;
+	width: 64px;
+}
+#view form input {
+	width: auto;
+	display: inline-block;
+	vertical-align: middle;
+}
 #footer {
 	text-align: center;
 	font-size: 14px;
-	padding: 40px 0 60px;
+	padding: 30px 0 40px;
 	color: #fff;
 }
 
