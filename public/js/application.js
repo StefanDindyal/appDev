@@ -144,6 +144,14 @@
 		e.preventDefault();
 	});
 
+	// Loading bar
+	Pace.on('start', function(){		
+		$('#loading').show();		
+	});
+	Pace.on('done', function(){		
+		$('#loading').fadeOut(250);		
+	});
+
 	// Add to database function
 	function writeCharData(charId, firstname, lastname, campaign, imageUrl) {
 		return firebase.database().ref('characters/' + charId).set({
@@ -166,7 +174,7 @@
 
 	// Upload files function with progress tracking
 	function uploadImg(file){
-		var uploadTask = storageRef.child('avatars/' + file.name).put(file);		
+		var uploadTask = storageRef.child('avatars/' + new Date().getTime() + file.name).put(file);		
 		// Listen for state changes, errors, and completion of the upload.
 		uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
 		  function(snapshot) {
