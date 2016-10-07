@@ -83,10 +83,17 @@
 		var firstname = $(this).parents('.char').find('h3').text();
 		var lastname = $(this).parents('.char').find('h4').text();
 		var name = firstname+' '+lastname;
-		$('body').append('<div id="edit"><div class="inner"><form><h2>Edit '+name+'</h2><div class="field"><input type="text" name="firstname" value="" placeholder="First Name"></div><div class="field"><input type="text" name="lastname" value="" placeholder="Last Name"></div><div class="field"><input type="text" name="campaign" value="" placeholder="Campaign"></div><div class="field"><input type="file" name="avatar" accept="image/*"></div><div class="field"><input type="submit" name="submit" value="Submit"></div></form></div></div>');
+		$('body').append('<div id="edit"><div class="inner"><div class="close">Close X</div><form><h2>Edit '+name+'</h2><div class="field"><input type="text" name="firstname" value="" placeholder="First Name"></div><div class="field"><input type="text" name="lastname" value="" placeholder="Last Name"></div><div class="field"><input type="text" name="campaign" value="" placeholder="Campaign"></div><div class="field"><input type="file" name="avatar" accept="image/*"></div><div class="field"><input type="submit" name="submit" value="Submit"></div></form></div></div>');
 		$('body #edit').fadeIn(300);
 		return false;	
 		e.preventDefault();
+	});
+
+	// Edit close event
+	$(document).on('click', '#edit .close', function(e){
+		$('body #edit').fadeOut(300, function(){
+			$(this).remove();	
+		});
 	});
 
 	// Delete character event
@@ -214,7 +221,7 @@
 			var firstname = data.child('firstname').val();
 			var lastname = data.child('lastname').val();
 			var campaign = data.child('campaign').val();
-			str += '<li class="char" data-key="'+data.key+'">';
+			str += '<li class="char" data-key="'+data.key+'"><div class="inner">';
 			str += '<div class="edge"><img src="'+avatar+'"/></div>';
 			str += '<h3>'+firstname+'</h3>';
 			str += '<h4>'+lastname+'</h4>';
@@ -222,7 +229,7 @@
 			str += '<div class="action"><a href="#" class="edit">edit</a>';
 			str += '&nbsp;|&nbsp;';
 			str += '<a href="#" class="delete">delete</a></div><span>'+campaign+'</span></div>';
-			str += '</li>';
+			str += '</div></li>';
 		});
 		return str;
 	}
