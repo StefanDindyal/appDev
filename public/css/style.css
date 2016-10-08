@@ -218,6 +218,7 @@ form input[type="submit"] {
 	height: 100%;
 	background-color: #f1f1f1;
 	display: none;
+	overflow: auto;
 }
 #view .close {
 	cursor: pointer;
@@ -299,8 +300,7 @@ form input[type="submit"] {
 	form {
 		max-width: 100%;
 	}
-	#view {
-		overflow: auto;
+	#view {		
 		padding: 10px;
 	}
 	#view .contents {
