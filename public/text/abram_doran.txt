@@ -1,0 +1,279 @@
+Campaign: Cave of Whispers
+
+Base:
+Charater Name: Abram Doran
+Class: Ranger
+Level: 9
+Race/Template: Human
+Size: Medium
+Gender: Male
+Alignment: NG
+Height: 5' 8"
+Weight: 190lbs
+HP: 59
+
+Ability Scores:
+Str: 10 +0
+Dex: 19 +3
+Con: 13 +1
+Int: 16 +2
+Wis: 17 +2
+Cha: 19 +3
+Speed: 30ft
+Init Mod: +3
+Grapple: 6
+
+Saving Throws:
+Fort: 6
+Refl: 8
+Will: 4
+
+Armor Class:
+AC: 16
+Touch: 13
+Flat: 13
+
+Armor:
+Studded Armor (Light) +3 AC | +5 MAX Dex | Armor Check Penalty -1 | Weight 31lbs
+
+Items Worn:
+Head -
+Eyes -
+Neck - Talisman of Life Detection
+Shoulders - Elvyn Cloak AC +2 | Hide +5
+Ring #1 -
+Ring #2 -
+Hands -
+Arms/Wrists - 
+Body - 
+Torso -
+Waist -
+Feet -
+
+Status:
+Madness: 15
+
+Equiped:
+- Dagger | +6 | 1d4 | x2 19 - 20 | Close Range | Pierce | Momento of Sister
+- Composite | +9 | 1d8 | x3 20 | Long Range 100ft | Pierce
+- Silver Dagger | +8 | 2d4 | x2 20
+- Composite | +9 | 1d8+4 | x3 20
+-- Swear Enemy : "You are my sworn enemy" | 3d8 | 4x 20 | 24hrs + 1d4hrs Recharge
+- Silver Bladed Bow | +6 | 1d8+Dex | x2 18 - 20 | Close and Medium Range 30ft | Pierce
+
+Ammo: Arrows 
+- 2x Infernal 
+- 37x Regular
+- 10x Oiled
+
+Inventory:
+- 4x Poison Glands (Ambush Drake Gland)
+- 7x Scrap Metal
+- 12x Fangs/Claws
+- 9x Days Rashions(Jerkey)
+- 2x Water Skins
+- 24x Arrow Shafts
+- 5x Helhound Spines
+- 1x Helhound Hide
+- Book of Dipolomacy +2
+- 3x Weak Daggers
+- Blue Collar
+- 1x Poison Flask (Venomous Spider)
+- Pulsing Ruby Heart
+- Pulse of lesser Vampire Ash
+- Pulse of True Vampire Ash
+- Amulet of Anti-Frost +5
+- Flute
+- Guitar
+- 1x Knecklace Pearls
+- 2x Fancy Dresses
+- Delialah's Journal
+- Flask of Oily Liquid
+- 1x Tourch
+- 3x Quiver
+- Backpack
+- 1x Spell Component Pouch
+-- 716g 800s
+- Pouch (Red, Green, Black Idols. 4 keys)
+- White Crown, Red Blade, Skeleton Skull, Black scycle keys.
+
+Other Items Owned:
+- 
+
+Carrying Capacity:
+Light - 33lbs
+Medium - 34 - 66lbs
+Heavy - 67 - 100lbs
+
+Spells:
+1st lvl - Charm Animal, Delay Poison, Summon Natures Ally
+2nd lvl - Cats Grace, Windwall
+
+Spells/Day:
+1 - 3
+2 - 3
+3 - 1
+
+Racial Traits:
+- Favored Enemy Undead +4
+- Favored Enemy Construct +2
+- Wild Empathy
+- Woodland Stride
+- Archery Combat Style
+- Animal Companion
+
+Feats:
+- Alertness
+- Animal Affinity
+- Dodge
+- Endurance
+- Rapid Shot
+- Rapid Reload
+- Track
+- Negociator
+
+Languages:
+- Common
+- Elven
+- Sylvan
+
+Animal Companion:
+Name - William Turner
+Type - Vermin
+HP - 31
+Str - 13
+Dex - 15
+Con - 10
+Int - 0
+Wis - 10
+Cha - 2
+Fortitude Save - +3
+Reflex Save - +3
+Will Save - +1
+Initiative - +2
+Speed - 40ft
+AC - 14
+Touch - 11
+Flat - 12
+Alignment - Neutral
+Grapple Modifier - +7
+Personality - Happy
+Reach - 10ft
+Attacks - Bite | +3 | 1d8+1 (Poison) | 20 crit
+Skills - Climb +10 | Spot +4 | Hide +6
+Feats - Weapon Finess
+Special Abilities - Dark Vision | Poison
+
+Abram Skills:
+Appraise +2
+Autohypnosis +2
+Balance +3
+Bluff +3
+Climb +9
+Concentration +7
+Craft (Arrow) +2
+Descipher Script +2
+Diplomacy +3
+Disable Device +2
+Disguise +3
+Escape Artist +3
+Forgery +2
+Gather Information +3
+Handle Animal +12
+Heal +2
+Hide +3
+Intimidate +3
+Jump +9
+Knowledge (Arcana) +2
+Knowledge (Arch/Eng) +2
+Knowledge (Dungeoneering) +11
+Knowledge (Geography) +2
+Knowledge (History) +2
+Knowledge (Local) +2
+Knowledge (Nature) +2
+Knowledge (Nobility/Royalty) +2
+Knowledge (The Planes) +2
+Knowledge (Psionics) +2
+Knowledge (Religeon) +2
+Knowledge (?) +2
+Listen +11
+Move Silently +12
+Open Lock +3
+Perform (Act) +3
+Perform (Comedy) +3
+Perform (Dance) +3
+Perform (Keyboard) +3
+Perform (Oratory) +3
+Perform (Percussion) +3
+Perform (String Instrument) +3
+Perform (Wind Instrument) +3
+Perform (Sing) +3
+Perform (?) +3
+Profession (Hunter) +2
+Profession (?) +2
+Psicraft +2
+Ride +6
+Search +11
+Sense Motive +2
+Slight of Hand +3
+Spellcraft +2
+Spot +11
+Survival +12
+Swim +8
+Tumble +3
+Use Magic Device +3
+Use Psionic Device +3
+Use Rope +12
+
+Session //////////////////////////////////////////
+
+Abram:
+HP - 5
+Arrows - 33
+Madness - 17
+- 4 Potions
+- 10 Oiled Arrows
+- 2 Infernal Arrows
+- 1 lvl 3
+- 3 lvl 2
+- 3 lvl 1
+- Negotiator +2
+-- 491g 800s
+- Red Idol Ball of Tendrils
+- Purple Idol Tenticles
+- Black Idol Flesh
+- AC +2
+- Hide +5
+- 4 copper, Crossbow 1d6
+- Now Invisible Hide +10
+- Blessed +2 AC/Save/Atk/Atk-Roll
+
+Spirit Abram:
+HP - /
+Madness - 5
+Atral Body
+Hide +20
+Bluff +20
+Diplomacy +20
+Disguise +25
+Sense Motive +30
+Spirit of the mirror uses host to sustain its existance.
+Could be harmful to other people it interacts with.
+Can still kill body.
+- Skills you get ^
+- Rgenerate 5HP per round / Non crit damage
+- Sense Hostility From About Anywhere
+- Spiritual Contract 1d100 Spirit will control me
+- Hunger for energy | If I grapple and touch 2d4 HP dmg Siphon
+- Can't talk about the spirit
+
+William:
+HP - 31
+
+Notes:
+- Fauna, The Gnome Sorceress.
+- Kara, Crusader Archer.
+- Standing by altar. Orbs seen. Alter of offering. Square intent for an idol. Avoid battle axe. See red hulking figure. Flames engulf me.
+- Masked lady is a Cleric.
+- Beholder in final room.
+- 
