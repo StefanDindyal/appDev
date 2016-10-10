@@ -3,14 +3,14 @@ Campaign: Cave of Whispers
 Base:
 Charater Name: Abram Doran
 Class: Ranger
-Level: 9
+Level: 10
 Race/Template: Human
 Size: Medium
 Gender: Male
 Alignment: NG
 Height: 5' 8"
 Weight: 190lbs
-HP: 59
+HP: 66
 
 Ability Scores:
 Str: 10 +0
@@ -96,6 +96,10 @@ Inventory:
 -- 716g 800s
 - Pouch (Red, Green, Black Idols. 4 keys)
 - White Crown, Red Blade, Skeleton Skull, Black scycle keys.
+- 3 Edible mushrooms
+- Old dried meat in a bag salt
+- 3 Edible moss
+- 5 larva hand sized
 
 Other Items Owned:
 - 
@@ -196,8 +200,8 @@ Knowledge (The Planes) +2
 Knowledge (Psionics) +2
 Knowledge (Religeon) +2
 Knowledge (?) +2
-Listen +11
-Move Silently +12
+Listen +13
+Move Silently +13
 Open Lock +3
 Perform (Act) +3
 Perform (Comedy) +3
@@ -213,12 +217,12 @@ Profession (Hunter) +2
 Profession (?) +2
 Psicraft +2
 Ride +6
-Search +11
+Search +13
 Sense Motive +2
 Slight of Hand +3
 Spellcraft +2
-Spot +11
-Survival +12
+Spot +13
+Survival +13
 Swim +8
 Tumble +3
 Use Magic Device +3
@@ -228,9 +232,9 @@ Use Rope +12
 Session //////////////////////////////////////////
 
 Abram:
-HP - 5
+HP - 48
 Arrows - 33
-Madness - 17
+Madness - 19
 - 4 Potions
 - 10 Oiled Arrows
 - 2 Infernal Arrows
@@ -272,8 +276,8 @@ HP - 31
 
 Notes:
 - Fauna, The Gnome Sorceress.
-- Kara, Crusader Archer.
 - Standing by altar. Orbs seen. Alter of offering. Square intent for an idol. Avoid battle axe. See red hulking figure. Flames engulf me.
 - Masked lady is a Cleric.
 - Beholder in final room.
-- 
+- All crusaders dead.
+- Now in the real cave. A maze.
