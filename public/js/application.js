@@ -133,7 +133,13 @@
 			console.log(key + ' has been removed');
 		}).catch(function(error){
 			console.log('Error updating', error);
-		});		
+		});
+		// Delete character stats
+		removeStatData(key).then(function(){
+			console.log(key + ' has been removed');
+		}).catch(function(error){
+			console.log('Error updating', error);
+		});
 		e.preventDefault();
 	});
 
@@ -155,20 +161,22 @@
 			str += '<div class="name">'+name+'</div>';
 			str += '<div class="campaign">'+campaign+'</div>';
 			str += '<div class="add"><a href="#">Add Info</a></div>';
-			str += '</div>';
+			str += '<div class="weld"></div></div>';
 			$('#view .contents').append(str);
 		});
 
-		stats.once('value', function(snapshot){
-			console.log(snapshot.val());
+		stats.child(char).once('value', function(snapshot){
 			if(snapshot.val() != null){
 				$('#view .contents .add').hide();
-			}
+				$('#view .basic .weld').html(showBase(snapshot));
+			}			
 		});
 
 		console.log('learn more');
 		$('#view').slideDown(300);
 	});
+
+
 
 	$(document).on('click', '#view .close', function(){
 		console.log('closed');		
@@ -177,7 +185,6 @@
 		});
 	});
 
-	var nah = false;
 	$(document).on('click', '#view .add', function(e){
 		e.preventDefault();
 		console.log('adding stats');		
@@ -191,26 +198,65 @@
 		str += '<div><label>Alignment</label><input type="text" name="alignment"></div>';
 		str += '<div><label>Height</label><input type="text" name="height"></div>';
 		str += '<div><label>Weight</label><input type="text" name="weight"></div>';
-		str += '<div><label>HP</label><input type="text" name="hp"></div>';		
-		if(nah == false){
+		str += '<div><label>HP</label><input type="text" name="hp"></div>';	
+		str += '<div><input type="submit" value="Submit"></div>'
+		str += '</form>';
+		if($(this).find('a').hasClass('open')){
+			$(this).find('a').removeClass();
+			$('.basic form').remove();
+			$('#view .add a').text('Add Info');			
+		} else {
+			$(this).find('a').addClass('open');
 			$('.basic').append(str);
 			$('#view .add a').text('Never mind');
-			nah = true;
-		} else {
-			$('.basic form').remove();
-			$('#view .add a').text('Add Info');
-			nah = false;
 		}	
 	});
 
-	$(document).on('blur', '#view .info input', function(e){
+	$(document).on('submit', '#view form', function(e){
 		e.preventDefault();
+		var charId = $(this).parents('.basic').attr('data-key');
+		var values = {};
+		$(this).find('input').each(function(){
+			if($(this).attr('type') == 'text'){
+				var key = $(this).attr('name');
+				var val = $(this).val();
+				values[key] = val;
+			}
+		});
+		writeStatData(charId, values).then(function(snapshot){			
+			$('#view form').remove();
+			$('#view .add a').hide();						
+		});
+		stats.child(charId).on('value', function(snapshot) {
+			$('#view .basic .weld').html(showBase(snapshot));
+		});	
+	});
+
+	$(document).on('click', '.node', function(){
+		var el = $(this).parents('li');
+		var key = el.find('strong').text().toLowerCase();
+		var cur = el.find('span').text(); 
+		el.find('.node').hide();
+		el.append('<input type="text" name="'+key+'" placeholder="'+cur+'" contenteditable="true">');
+		el.find('input').focus();
+	})
+
+	$(document).on('blur', '#view .base input', function(e){
+		e.preventDefault();
+		console.log('fire');
 		var val = $(this).val();
 		var name = $(this).attr('name');
 		var key = $(this).parents('.basic').attr('data-key');
-		var value = {name: val};
-		console.log('adding stats'); 
-		updateStatData(key, value);
+		var value = {[name]: val};
+		console.log(value);
+		if(value[name] == ''){
+			value[name] = $(this).parents('li').find('span').text();
+		}
+		updateStatData(key, value).then(function(){			
+			stats.child(key).on('value', function(snapshot) {
+				$('#view .basic .weld').html(showBase(snapshot));
+			});	
+		});		
 	});
 
 	// Loading bar
@@ -234,15 +280,26 @@
 	// Update to database function
 	function updateCharData(charId, value) {
 		return firebase.database().ref('characters/' + charId).update(value);
-	}
-
-	function updateStatData(charId, value) {
-		return firebase.database().ref('stats/' + charId).update(value);
-	}	
+	}		
 
 	// Remove from database function
 	function removeCharData(charId) {
 		return firebase.database().ref('characters/' + charId).set(null);
+	}
+
+	//Add Stats in db
+	function writeStatData(charId, value) {
+		return firebase.database().ref('stats/' + charId).set(value);
+	}
+
+	// Update Stats in db
+	function updateStatData(charId, value) {
+		return firebase.database().ref('stats/' + charId).update(value);
+	}
+
+	// Remove Stats in db
+	function removeStatData(charId) {
+		return firebase.database().ref('stats/' + charId).set(null);
 	}
 
 	// Upload files function with progress tracking
@@ -294,7 +351,6 @@
 			str += '<li class="char" data-key="'+data.key+'"><div class="inner">';
 			str += '<div class="edge"><img src="'+avatar+'"/></div>';
 			str += '<h3>'+firstname+'</h3>';
-			console.log(lastname);
 			if(lastname == ' ' || !lastname){
 				str += '<h4>&nbsp;</h4>';
 			} else {
@@ -306,6 +362,33 @@
 			str += '<a href="#" class="delete">delete</a></div><span>'+campaign+'</span></div>';
 			str += '</div></li>';
 		});
+		return str;
+	}
+
+	function showBase(snapshot){
+		var Class = snapshot.child('class').val() || '?';
+		var Level = snapshot.child('level').val() || '?';
+		var Race = snapshot.child('race').val() || '?';
+		var Size = snapshot.child('size').val() || '?';
+		var Gender = snapshot.child('gender').val() || '?';
+		var Alignment = snapshot.child('alignment').val() || '?';
+		var Height = snapshot.child('height').val() || '?';
+		var Weight = snapshot.child('weight').val() || '?';
+		var Hp = snapshot.child('hp').val() || '?';
+		var str = '';
+		str += '<div class="base">';
+		str += '<ul class="list">';
+		str += '<li><strong>Class</strong><span class="node">'+Class+'</span></li>';
+		str += '<li><strong>Level</strong><span class="node">'+Level+'</span></li>';
+		str += '<li><strong>Race</strong><span class="node">'+Race+'</span></li>';
+		str += '<li><strong>Size</strong><span class="node">'+Size+'</span></li>';
+		str += '<li><strong>Gender</strong><span class="node">'+Gender+'</span></li>';
+		str += '<li><strong>Alignment</strong><span class="node">'+Alignment+'</span></li>';
+		str += '<li><strong>Height</strong><span class="node">'+Height+'</span></li>';
+		str += '<li><strong>Weight</strong><span class="node">'+Weight+'</span></li>';
+		str += '<li><strong>HP</strong><span class="node">'+Hp+'</span></li>';
+		str += '</ul>';
+		str += '</div>';
 		return str;
 	}
 
