@@ -8,6 +8,8 @@
 	var characters = database.ref('characters');
 	var stats = database.ref('stats');
 	
+	// stats.child('abram').update({time:50});
+
 	// Update view when database is updated
 	characters.on('value', function(snapshot) {
 		$('#characters .list').html(charIntro(snapshot));
@@ -155,13 +157,13 @@
 			var name = firstname + ' ' + lastname;
 			var str = '';
 			str += '<div class="basic" data-key="'+char+'">';
-			str += '<div class="pic">';
+			str += '<div class="wrap"><div class="pic">';
 			str += '<img src="'+img+'"/>';
 			str += '</div>';
-			str += '<div class="name">'+name+'</div>';
+			str += '<div class="over"><div class="name">'+name+'</div>';
 			str += '<div class="campaign">'+campaign+'</div>';
 			str += '<div class="add"><a href="#">Add Info</a></div>';
-			str += '<div class="weld"></div></div>';
+			str += '</div></div><div class="weld"></div></div>';
 			$('#view .contents').append(str);
 		});
 
@@ -173,14 +175,16 @@
 		});
 
 		console.log('learn more');
-		$('#view').slideDown(300);
+		$('body').addClass('cut');
+		$('#view').fadeIn(300);
 	});
 
 
 
 	$(document).on('click', '#view .close', function(){
-		console.log('closed');		
-		$('#view').slideUp(300, function(){
+		console.log('closed');				
+		$('#view').fadeOut(300, function(){
+			$('body').removeClass('cut');
 			$('#view .contents .basic').remove();
 		});
 	});
@@ -232,31 +236,39 @@
 		});	
 	});
 
-	$(document).on('click', '.node', function(){
+	$(document).on('blur', '#view .base input', function(e){
+		e.preventDefault();
+		var el = $(this);
+		var val = el.val();
+		var name = el.attr('name');
+		var key = el.parents('.basic').attr('data-key');
+		var keyin = el.parents('li').find('span').text();
+		var thisLi = el.parents('li').find('.node');
+		var value = {[name]: val};
+		if(value[name] == ''){
+			console.log('no change');
+			el.parents('li').find('input').remove();
+			thisLi.text(keyin).show();
+		} else {
+			console.log('change');
+			updateStatData(key, value).then(function(){			
+				stats.child(key).on('value', function(snapshot) {
+					var update = snapshot.child(name).val();
+					el.parents('li').find('input').hide().remove();
+					thisLi.text(update).show();
+				});	
+			});
+		}				
+	});
+
+	$(document).on('click', '.node', function(e){
+		e.preventDefault();
 		var el = $(this).parents('li');
 		var key = el.find('strong').text().toLowerCase();
-		var cur = el.find('span').text(); 
+		var cur = el.find('span').text();		
 		el.find('.node').hide();
 		el.append('<input type="text" name="'+key+'" placeholder="'+cur+'" contenteditable="true">');
 		el.find('input').focus();
-	})
-
-	$(document).on('blur', '#view .base input', function(e){
-		e.preventDefault();
-		console.log('fire');
-		var val = $(this).val();
-		var name = $(this).attr('name');
-		var key = $(this).parents('.basic').attr('data-key');
-		var value = {[name]: val};
-		console.log(value);
-		if(value[name] == ''){
-			value[name] = $(this).parents('li').find('span').text();
-		}
-		updateStatData(key, value).then(function(){			
-			stats.child(key).on('value', function(snapshot) {
-				$('#view .basic .weld').html(showBase(snapshot));
-			});	
-		});		
 	});
 
 	// Loading bar
@@ -350,12 +362,14 @@
 			var campaign = data.child('campaign').val();
 			str += '<li class="char" data-key="'+data.key+'"><div class="inner">';
 			str += '<div class="edge"><img src="'+avatar+'"/></div>';
+			str += '<div class="name">'
 			str += '<h3>'+firstname+'</h3>';
 			if(lastname == ' ' || !lastname){
 				str += '<h4>&nbsp;</h4>';
 			} else {
 				str += '<h4>'+lastname+'</h4>';
 			}
+			str += '</div>';
 			str += '<div class="info">';
 			str += '<div class="action"><a href="#" class="edit">edit</a>';
 			str += '&nbsp;|&nbsp;';
@@ -377,6 +391,7 @@
 		var Hp = snapshot.child('hp').val() || '?';
 		var str = '';
 		str += '<div class="base">';
+		str += '<h1>Core</h1>';
 		str += '<ul class="list">';
 		str += '<li><strong>Class</strong><span class="node">'+Class+'</span></li>';
 		str += '<li><strong>Level</strong><span class="node">'+Level+'</span></li>';
@@ -391,33 +406,5 @@
 		str += '</div>';
 		return str;
 	}
-
-	char = {
-		"abram":{
-			"campaign":"Cave of Whispers",
-			"avatar":"url",
-			"firstname":"Abram",
-			"lastname":"Doran",
-			"class":"Ranger",
-			"level":9,
-			"race":"human",
-			"size":"medium",
-			"gender":"male",
-			"alignment":"NG",
-			"height":{"feet":5,"inches":8},
-			"weight":190,
-			"hp":59,
-			"onhand":[
-				{
-					type: 'Compound Bow'
-				}
-			],
-			armor: [
-				{
-					class: 'Medium'
-				}
-			]
-		}
-	};
 
 })(jQuery);
