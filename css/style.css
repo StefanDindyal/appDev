@@ -27,104 +27,25 @@ body {
 	padding: 10px;
 }
 #app {
-	position: relative;\
+	position: relative;
 	width: 100%;
 	max-width: 960px;
 	margin: 0px auto;
 	padding: 20px;
-	border: 1px solid purple;
 	overflow: hidden;
-	min-height: 600px;
-	background-color: pink;
-	border-radius: 10px;
-	box-shadow: 0 0 20px pink;
 }
-#app button {
-	cursor: pointer;
-	background-color: DarkCyan;
-	border: 1px solid purple;
-	padding: 5px 10px;
-	border-radius: 5px;
-	color: LightPink;
-	text-transform: uppercase;
-	font-weight: bold;
+#app .media {
+	position: relative;
+	width: 33.33%;
+	display: inline-block;
+	vertical-align: top;
+	padding: 5px;
 }
-#app .products {
-	width: 70%;
-	overflow: hidden;
-	padding-right: 20px;
+#app .media img {
+	max-width: 100%;
+	height: auto;
+	display: block;
 }
-#app .product {
-	width: 46%;
-	float: left;
-	padding: 10px;
-	margin: 10px 2%;
-	border: 1px solid purple;
-	background-color: white;
-	border-radius: 5px;
-	box-shadow: 0 0 10px MediumPurple;
-}
-#app .product h1 {
-	font-weight: 400;
-}
-#app .product h2 {
-	font-size: 1.4rem;
-	font-weight: 600;
-	color: MidnightBlue;
-}
-#app .product h3 {
-	margin: 5px 0 10px;
-}
-#app #cart {
-	width: 30%;
-	float: right;
-	margin: 10px 0;
-	padding: 10px;
-	border: 1px solid purple;
-	background-color: white;
-	border-radius: 5px;
-	box-shadow: 0 0 10px purple;
-}
-#app #cart .count {
-	padding: 5px 10px;
-	border: 1px solid purple;
-	text-align: right;
-	margin-bottom: 20px;
-}
-#app #cart .total {
-	padding: 15px 10px;
-	border: 1px solid purple;
-	text-align: right;	
-}
-#app #cart ul {
-	list-style: none;
-}
-#app #cart .item {
-	border-bottom: 1px solid grey;
-	padding: 10px;
-	margin: 5px 0;
-}
-#app #cart .item:last-child {
-	border-bottom: 0;
-	margin-bottom: 20px
-}
-#app #cart .item h1 {
-	font-weight: 400;
-}
-#app #cart .item h2 {
-	font-weight: 600;
-	padding: 5px 0 0;
-	font-size: 18px;
-}
-#app #cart .item h3 {
-	margin: 5px 0;
-}
-#app #cart .item h3 em {
-	font-style: normal;
-}
-
 @media only screen and (max-width: 768px){
-	#app .product {
-		width: 98%;
-	}
+	
 }
