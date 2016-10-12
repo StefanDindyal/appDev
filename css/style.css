@@ -29,7 +29,7 @@ body {
 #app {
 	position: relative;
 	width: 100%;
-	max-width: 960px;
+	max-width: 1400px;
 	margin: 0px auto;
 	padding: 20px;
 	overflow: hidden;
@@ -39,12 +39,93 @@ body {
 	width: 33.33%;
 	display: inline-block;
 	vertical-align: top;
-	padding: 5px;
+	padding: 10px;
 }
 #app .media img {
 	max-width: 100%;
 	height: auto;
 	display: block;
+}
+.media .core {
+	background-color: #fff;
+	box-shadow: 0 0 5px rgba(0,0,0,0.25);
+	padding: 20px;
+	cursor: pointer;
+}
+.media .img {
+	position: relative;
+}
+.media .likes {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 20px;
+	background-color: rgba(255,255,255,0.75);
+}
+.media .likes span {
+	font-size: 16px;
+}
+.media .caption {
+	padding: 10px 10px 0;
+	font-style: 18px;
+	line-height: 24px;
+	font-weight: bold;
+}
+#modal {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	padding: 20px;
+	background-color: rgba(255,255,255,0.75);
+}
+#modal .close {
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+#modal .in {
+	position: absolute;
+	width: 100%;
+	max-width: 640px;
+	margin: 0 auto;
+	box-shadow: 0 0 20px rgba(0,0,0,0.5);	
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	z-index: 4;
+}
+#modal img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+#modal .in .nav {
+	position: absolute;
+	top: 0;
+	width: 60px;
+	height: 100%;
+	background-color: rgba(255,255,255,0.75);
+	opacity: 0;
+	cursor: pointer;
+}
+#modal .in .nav.prev {
+	left: 0; 
+}
+#modal .in .nav.next {
+	right: 0;
+}
+#modal .in:hover .nav {
+	opacity: 1;
 }
 @media only screen and (max-width: 768px){
 	
