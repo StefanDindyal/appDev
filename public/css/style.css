@@ -263,7 +263,7 @@ form input[type="submit"] {
 }
 #view .contents .wrap {
 	text-align: center;
-	padding: 40px 0;
+	padding: 30px 0 40px;
 }
 #view .contents .pic {
 	width: auto;
@@ -362,26 +362,20 @@ form input[type="submit"] {
 	display: block;
 	vertical-align: middle;
 	padding: 0;
-	// height: 30px;
-	// line-height: 30px;
-	// background-color: #444;
 	color: #f1f1f1;
 	margin-left: 0px;
 	font-weight: 600;
-	// box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
-	// border-radius: 5px;
-	// border: 1px solid #262626;
 	margin: 0;
 	overflow: hidden;
-	font-size: 28px;
+	font-size: 24px;
 	border-bottom: 1px solid transparent;
 }
 #view .base li input {	
 	margin-left: 0px;
 	font-weight: 600;
-	font-size: 28px;
+	font-size: 24px;
 	font-family: 'Open Sans', sans-serif;
-	height: 38px;
+	height: 34px;
 	width: 100%;
 	background-color: transparent;
 	border: 0;

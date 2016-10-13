@@ -1,6 +1,7 @@
 'use strict';
 ;(function($){
 
+	// Vars declaration
 	var dapp, char;
 	var database = firebase.database();
 	var storage = firebase.storage();
@@ -178,8 +179,6 @@
 		$('body').addClass('cut');
 		$('#view').fadeIn(300);
 	});
-
-
 
 	$(document).on('click', '#view .close', function(){
 		console.log('closed');				
