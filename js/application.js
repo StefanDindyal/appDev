@@ -31,7 +31,7 @@
 		var el = $(this);
 		var id = el.parents('.media').attr('data-id');
 		var url = el.find('img').attr('src');
-		var modal = '<div id="modal" data-id="'+id+'"><div class="close"></div><div class="in"><img src="'+url+'"/><div class="nav prev"></div><div class="nav next"></div></div></div>';
+		var modal = '<div id="modal" data-id="'+id+'"><div class="close"></div><div class="in"><img src="'+url+'"/><a href="#" class="nav prev"></a><a href="" class="nav next"></a></div></div>';
 		$('body').append(modal);
 	});
 
