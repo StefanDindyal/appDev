@@ -322,13 +322,37 @@ form input[type="submit"] {
 	display: inline-block;
 	vertical-align: middle;
 }
-#view .base {
+#view .one {
 	padding-top: 0px;
-	overflow: hidden;
+	overflow: hidden;	
+	padding: 0px;
+	margin-bottom: 20px;
+}
+#view .one .a {
 	background-color: #262626;
 	padding: 5px;
+	border-radius: 5px;
 }
-#view .base h1 {
+#view .one:last-child {
+	margin-bottom: 0;
+}
+#view .one.ability {
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+}
+#view .one.ability .a {
+	margin-right: 10px;
+}
+#view .one.defence {
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+}
+#view .one.defence .a {
+	margin-left: 10px;
+}
+#view .one h1 {
 	font-weight: 600;
 	font-size: 24px;
 	text-transform: uppercase;
@@ -337,26 +361,35 @@ form input[type="submit"] {
 	border-radius: 0;
 	margin: 0;
 	border: 0;
+	border-bottom: 1px solid #30ffe4;
 }
-#view .base ul {
+#view .one ul {
 	width: 100%;
 	margin-bottom: 0;
 }
-#view .base li {
+#view .one li {
 	width: 33.33%;
 	display: inline-block;
 	margin: 5px 0;
-	padding: 0 5px;
+	padding: 5px;
 	vertical-align: top;
 }
-#view .base li strong {
+#view .one li.editing {
+	background-color: #010101;
+	padding: 5px;
+}
+#view .one li.empty {
+	width: 100%;
+	border-top: 1px solid #ffbd30;
+}
+#view .one li strong {
 	display: inline-block;
 	vertical-align: middle;
 	display: block;
 	color: #999;
 	font-weight: 600;
 }
-#view .base li span {
+#view .one li span {
 	position: relative;
 	display: inline-block;
 	display: block;
@@ -370,7 +403,7 @@ form input[type="submit"] {
 	font-size: 24px;
 	border-bottom: 1px solid transparent;
 }
-#view .base li input {	
+#view .one li input {	
 	margin-left: 0px;
 	font-weight: 600;
 	font-size: 24px;
@@ -383,16 +416,16 @@ form input[type="submit"] {
 	border-bottom: 1px solid #f1f1f1;
 	outline: none;
 }
-#view .base li ::-webkit-input-placeholder {
+#view .one li ::-webkit-input-placeholder {
    color: #f1f1f1;
 }
-#view .base li :-moz-placeholder { /* Firefox 18- */
+#view .one li :-moz-placeholder { /* Firefox 18- */
    color: #f1f1f1; 
 }
-#view .base li ::-moz-placeholder {  /* Firefox 19+ */
+#view .one li ::-moz-placeholder {  /* Firefox 19+ */
    color: #f1f1f1;  
 }
-#view .base li :-ms-input-placeholder {  
+#view .one li :-ms-input-placeholder {  
    color: #f1f1f1;  
 }
 #view .node {
@@ -439,7 +472,7 @@ form input[type="submit"] {
 	#view .contents .over {
 		width: 100%;
 	}
-	#view .base li {
+	#view .one li {
 		width: 100%;
 	}
 }

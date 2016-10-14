@@ -163,16 +163,18 @@
 			str += '</div>';
 			str += '<div class="over"><div class="name">'+name+'</div>';
 			str += '<div class="campaign">'+campaign+'</div>';
-			str += '<div class="add"><a href="#">Add Info</a></div>';
 			str += '</div></div><div class="weld"></div></div>';
 			$('#view .contents').append(str);
 		});
 
 		stats.child(char).once('value', function(snapshot){
-			if(snapshot.val() != null){
-				$('#view .contents .add').hide();
-				$('#view .basic .weld').html(showBase(snapshot));
-			}			
+			if(snapshot.val() == null){
+				stats.child(char).set('').then(function(snapshot){
+					$('#view .basic .weld').html(showAllStats(snapshot));
+				});				
+			} else {
+				$('#view .basic .weld').html(showAllStats(snapshot));
+			}
 		});
 
 		console.log('learn more');
@@ -188,54 +190,7 @@
 		});
 	});
 
-	$(document).on('click', '#view .add', function(e){
-		e.preventDefault();
-		console.log('adding stats');		
-		var str = '';
-		str += '<form>';
-		str += '<div><label>Class</label><input type="text" name="class"></div>';
-		str += '<div><label>Level</label><input type="text" name="level"></div>';
-		str += '<div><label>Race</label><input type="text" name="race"></div>';
-		str += '<div><label>Size</label><input type="text" name="size"></div>';
-		str += '<div><label>Gender</label><input type="text" name="gender"></div>';
-		str += '<div><label>Alignment</label><input type="text" name="alignment"></div>';
-		str += '<div><label>Height</label><input type="text" name="height"></div>';
-		str += '<div><label>Weight</label><input type="text" name="weight"></div>';
-		str += '<div><label>HP</label><input type="text" name="hp"></div>';	
-		str += '<div><input type="submit" value="Submit"></div>'
-		str += '</form>';
-		if($(this).find('a').hasClass('open')){
-			$(this).find('a').removeClass();
-			$('.basic form').remove();
-			$('#view .add a').text('Add Info');			
-		} else {
-			$(this).find('a').addClass('open');
-			$('.basic').append(str);
-			$('#view .add a').text('Never mind');
-		}	
-	});
-
-	$(document).on('submit', '#view form', function(e){
-		e.preventDefault();
-		var charId = $(this).parents('.basic').attr('data-key');
-		var values = {};
-		$(this).find('input').each(function(){
-			if($(this).attr('type') == 'text'){
-				var key = $(this).attr('name');
-				var val = $(this).val();
-				values[key] = val;
-			}
-		});
-		writeStatData(charId, values).then(function(snapshot){			
-			$('#view form').remove();
-			$('#view .add a').hide();						
-		});
-		stats.child(charId).on('value', function(snapshot) {
-			$('#view .basic .weld').html(showBase(snapshot));
-		});	
-	});
-
-	$(document).on('blur', '#view .base input', function(e){
+	$(document).on('blur', '#view .one input', function(e){
 		e.preventDefault();
 		var el = $(this);
 		var val = el.val();
@@ -257,14 +212,16 @@
 					thisLi.text(update).show();
 				});	
 			});
-		}				
+		}
+		$('#view .one li').removeClass('editing');				
 	});
 
 	$(document).on('click', '.node', function(e){
 		e.preventDefault();
 		var el = $(this).parents('li');
-		var key = el.find('strong').text().toLowerCase();
-		var cur = el.find('span').text();		
+		var key = el.find('strong').text().trim().toLowerCase().replace(/\W/g, '');
+		var cur = el.find('span').text();
+		el.addClass('editing');
 		el.find('.node').hide();
 		el.append('<input type="text" name="'+key+'" placeholder="'+cur+'" contenteditable="true">');
 		el.find('input').focus();
@@ -378,18 +335,60 @@
 		return str;
 	}
 
-	function showBase(snapshot){
-		var Class = snapshot.child('class').val() || '?';
-		var Level = snapshot.child('level').val() || '?';
-		var Race = snapshot.child('race').val() || '?';
-		var Size = snapshot.child('size').val() || '?';
-		var Gender = snapshot.child('gender').val() || '?';
-		var Alignment = snapshot.child('alignment').val() || '?';
-		var Height = snapshot.child('height').val() || '?';
-		var Weight = snapshot.child('weight').val() || '?';
-		var Hp = snapshot.child('hp').val() || '?';
-		var str = '';
-		str += '<div class="base">';
+	function showAllStats(snap){
+		var Class = getStatData(snap, 'class'),
+			Level = getStatData(snap, 'level'),
+			Race = getStatData(snap, 'race'),
+			Size = getStatData(snap, 'size'),
+			Gender = getStatData(snap, 'gender'),
+			Alignment = getStatData(snap, 'alignment'),
+			Height = getStatData(snap, 'height'),
+			Weight = getStatData(snap, 'weight'),
+			Hp = getStatData(snap, 'hp'),
+			stre = getStatData(snap, 'str'),
+			dex = getStatData(snap, 'dex'),
+			con = getStatData(snap, 'con'),
+			int = getStatData(snap, 'int'),
+			wis = getStatData(snap, 'wis'),
+			cha = getStatData(snap, 'cha'),
+			speed = getStatData(snap, 'speed'),
+			init = getStatData(snap, 'init'),
+			grapple = getStatData(snap, 'grapple'),
+			fort = getStatData(snap, 'fort'),
+			refl = getStatData(snap, 'refl'),
+			will = getStatData(snap, 'will'),
+			ac = getStatData(snap, 'ac'),
+			flat = getStatData(snap, 'flatac'),
+			touch = getStatData(snap, 'touchac'),
+			arm = getStatData(snap, 'armor'),
+			armClass = getStatData(snap, 'armclass'),
+			armBonus = getStatData(snap, 'armbonus'),
+			armPenalty = getStatData(snap, 'armpenalty'),
+			armWeight = getStatData(snap, 'armweight'),
+			status = getStatData(snap, 'status'),
+			wHead = getStatData(snap, 'head'),
+			wEyes = getStatData(snap, 'eyes'),
+			wNeck = getStatData(snap, 'neck'),
+			wShoulders = getStatData(snap, 'shoulders'),
+			wRing1 = getStatData(snap, 'ring1'),
+			wRing2 = getStatData(snap, 'ring2'),
+			wHands = getStatData(snap, 'hands'),
+			wWrists = getStatData(snap, 'wrists'),
+			wBody = getStatData(snap, 'body'),
+			wTorso = getStatData(snap, 'torso'),
+			wWaist = getStatData(snap, 'waist'),
+			wFeet = getStatData(snap, 'feet'),
+			str = '';
+		str += '<div class="one status">';
+		str += '<div class="a">';
+		str += '<h1>Status</h1>';
+		str += '<ul class="list">';
+		str += '<li><strong>Madness</strong><span class="node">'+status+'</span></li>';
+		str += '</ul>';
+		str += '</div>';
+		str += '</div>';
+		str += '<div class="one base">';
+		str += '<div class="a">';
 		str += '<h1>Core</h1>';
 		str += '<ul class="list">';
 		str += '<li><strong>Class</strong><span class="node">'+Class+'</span></li>';
@@ -403,7 +402,94 @@
 		str += '<li><strong>HP</strong><span class="node">'+Hp+'</span></li>';
 		str += '</ul>';
 		str += '</div>';
+		str += '</div>';
+		str += '<div class="one ability">';
+		str += '<div class="a">';
+		str += '<h1>Ability Scores</h1>';
+		str += '<ul class="list">';
+		str += '<li><strong>Str</strong><span class="node">'+stre+'</span></li>';
+		str += '<li><strong>Dex</strong><span class="node">'+dex+'</span></li>';
+		str += '<li><strong>Con</strong><span class="node">'+con+'</span></li>';
+		str += '<li><strong>Int</strong><span class="node">'+int+'</span></li>';
+		str += '<li><strong>Wis</strong><span class="node">'+wis+'</span></li>';
+		str += '<li><strong>Cha</strong><span class="node">'+cha+'</span></li>';
+		str += '<li><strong>Speed</strong><span class="node">'+speed+'</span></li>';
+		str += '<li><strong>Init</strong><span class="node">'+init+'</span></li>';
+		str += '<li><strong>Grapple</strong><span class="node">'+grapple+'</span></li>';
+		str += '</ul>';
+		str += '</div>';
+		str += '</div>';
+		str += '<div class="one defence">';
+		str += '<div class="a">';
+		str += '<h1>Saves / AC</h1>';
+		str += '<ul class="list">';
+		str += '<li><strong>Fort</strong><span class="node">'+fort+'</span></li>';
+		str += '<li><strong>Refl</strong><span class="node">'+refl+'</span></li>';
+		str += '<li><strong>Will</strong><span class="node">'+will+'</span></li>';
+		str += '<li class="empty"></li>';
+		str += '<li><strong>AC</strong><span class="node">'+ac+'</span></li>';
+		str += '<li><strong>Flat AC</strong><span class="node">'+flat+'</span></li>';
+		str += '<li><strong>Touch AC</strong><span class="node">'+touch+'</span></li>';
+		str += '<li class="empty"></li>';
+		str += '<li><strong>Armor</strong><span class="node">'+arm+'</span></li>';
+		str += '<li><strong>Arm Class</strong><span class="node">'+armClass+'</span></li>';
+		str += '<li><strong>Arm Stat+</strong><span class="node">'+armBonus+'</span></li>';
+		str += '<li><strong>Arm Penalty</strong><span class="node">'+armPenalty+'</span></li>';
+		str += '<li><strong>Arm Weight</strong><span class="node">'+armWeight+'</span></li>';
+		str += '</ul>';
+		str += '</div>';
+		str += '</div>';
+		str += '<div class="one worn">';
+		str += '<div class="a">';
+		str += '<h1>Items Worn</h1>';
+		str += '<ul class="list">';
+		str += '<li><strong>Head</strong><span class="node">'+wHead+'</span></li>';
+		str += '<li><strong>Eyes</strong><span class="node">'+wEyes+'</span></li>';
+		str += '<li><strong>Neck</strong><span class="node">'+wNeck+'</span></li>';
+		str += '<li><strong>Shoulders</strong><span class="node">'+wShoulders+'</span></li>';
+		str += '<li><strong>Ring 1</strong><span class="node">'+wRing1+'</span></li>';
+		str += '<li><strong>Ring 2</strong><span class="node">'+wRing2+'</span></li>';
+		str += '<li><strong>Hands</strong><span class="node">'+wHands+'</span></li>';
+		str += '<li><strong>Wrists</strong><span class="node">'+wWrists+'</span></li>';
+		str += '<li><strong>Body</strong><span class="node">'+wBody+'</span></li>';
+		str += '<li><strong>Torso</strong><span class="node">'+wTorso+'</span></li>';
+		str += '<li><strong>Waist</strong><span class="node">'+wWaist+'</span></li>';
+		str += '<li><strong>Feet</strong><span class="node">'+wFeet+'</span></li>';
+		str += '</ul>';
+		str += '</div>';
+		str += '</div>';
+		str += '<div class="one equiped">';
+		str += '<div class="a">';
+		str += '<h1>Weapons / Sheilds</h1>';
+		str += '<ul class="list">';
+		str += '<li><strong>Head</strong><span class="node">'+wHead+'</span></li>';
+		str += '<li><strong>Eyes</strong><span class="node">'+wEyes+'</span></li>';
+		str += '<li><strong>Neck</strong><span class="node">'+wNeck+'</span></li>';
+		str += '<li><strong>Shoulders</strong><span class="node">'+wShoulders+'</span></li>';
+		str += '<li><strong>Ring 1</strong><span class="node">'+wRing1+'</span></li>';
+		str += '<li><strong>Ring 2</strong><span class="node">'+wRing2+'</span></li>';
+		str += '<li><strong>Hands</strong><span class="node">'+wHands+'</span></li>';
+		str += '<li><strong>Wrists</strong><span class="node">'+wWrists+'</span></li>';
+		str += '<li><strong>Body</strong><span class="node">'+wBody+'</span></li>';
+		str += '<li><strong>Torso</strong><span class="node">'+wTorso+'</span></li>';
+		str += '<li><strong>Waist</strong><span class="node">'+wWaist+'</span></li>';
+		str += '<li><strong>Feet</strong><span class="node">'+wFeet+'</span></li>';
+		str += '</ul>';
+		str += '</div>';
+		str += '</div>';
 		return str;
+	}
+
+	function getStatData(snap, name){
+		if(snap && name){
+			if(snap.child(name).val()){
+				return snap.child(name).val();	
+			} else {
+				return '?';
+			}		
+		} else {
+			return '?';
+		}
 	}
 
 })(jQuery);
