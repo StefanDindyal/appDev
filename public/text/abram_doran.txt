@@ -68,11 +68,9 @@ Ammo: Arrows
 
 Inventory:
 - 4x Poison Glands (Ambush Drake Gland)
-- 7x Scrap Metal
 - 12x Fangs/Claws
-- 9x Days Rashions(Jerkey)
 - 2x Water Skins
-- 24x Arrow Shafts
+- 7x Arrow Shafts
 - 5x Helhound Spines
 - 1x Helhound Hide
 - Book of Dipolomacy +2
@@ -97,9 +95,11 @@ Inventory:
 - Pouch (Red, Green, Black Idols. 4 keys)
 - White Crown, Red Blade, Skeleton Skull, Black scycle keys.
 - 3 Edible mushrooms
-- Old dried meat in a bag salt
+- Old dried meat in a bag salt x 10 (5 days)
 - 3 Edible moss
 - 5 larva hand sized
+- 9x Days Rashions(Jerkey)
+- 1x Flask of Ooze Jelly Blue
 
 Other Items Owned:
 - 
@@ -150,7 +150,7 @@ Dex - 15
 Con - 10
 Int - 0
 Wis - 10
-Cha - 2
+Cha - 3
 Fortitude Save - +3
 Reflex Save - +3
 Will Save - +1
@@ -232,25 +232,25 @@ Use Rope +12
 Session //////////////////////////////////////////
 
 Abram:
-HP - 48
-Arrows - 33
+HP - 44
+Arrows - 49
 Madness - 19
-- 4 Potions
-- 10 Oiled Arrows
+- 3 Potions
+- 8 Oiled Arrows
 - 2 Infernal Arrows
 - 1 lvl 3
 - 3 lvl 2
 - 3 lvl 1
 - Negotiator +2
--- 491g 800s
+-- 588g 897s
 - Red Idol Ball of Tendrils
 - Purple Idol Tenticles
 - Black Idol Flesh
 - AC +2
 - Hide +5
 - 4 copper, Crossbow 1d6
-- Now Invisible Hide +10
 - Blessed +2 AC/Save/Atk/Atk-Roll
+- 20ft coiled wire
 
 Spirit Abram:
 HP - /
@@ -272,7 +272,7 @@ Can still kill body.
 - Can't talk about the spirit
 
 William:
-HP - 31
+HP - 37
 
 Notes:
 - Fauna, The Gnome Sorceress.
