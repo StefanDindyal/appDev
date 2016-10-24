@@ -175,41 +175,35 @@
 		});
 
 		$('body').addClass('cut');
-		$('#view').show(300);
+		$('#view').slideDown(300);
 	});
 
 	$(document).on('click', '#view .close', function(){
 		console.log('closed');				
-		$('#view').hide(300, function(){
+		$('#view').slideUp(300, function(){
 			$('body').removeClass('cut');
 			$('#view .contents .basic').remove();
 		});
 	});
 
 	// Input blur function
-	$(document).on('blur', '#view .one input', function(e){
+	$(document).on('blur', '#view .one li div', function(e){
 		e.preventDefault();
 		var el = $(this);
-		var val = el.val();
-		var name = el.attr('name');
+		var val = el.text();
+		var name = el.attr('data-name');
 		var key = el.parents('.basic').attr('data-key');
-		var value = {[name]: val};
-		if(value[name] == val){
-			console.log('no change');			
-		} else {
-			console.log('change');
-			updateStatData(key, value).then(function(){			
-				stats.child(key).on('value', function(snapshot) {
-					var update = snapshot.child(name).val();
-					console.log(update);					
-				});	
-			});
-		}
+		var value = {[name]: val};		
+		updateStatData(key, value).then(function(){			
+			stats.child(key).on('value', function(snapshot) {
+				var update = snapshot.child(name).val();					
+			});	
+		});
 		$('#view .one li').removeClass('editing');				
 	});
 
 	// Input focus function
-	$(document).on('focus', '#view .one input', function(e){
+	$(document).on('focus', '#view .one li div', function(e){
 		e.preventDefault();
 		var el = $(this).parents('li');
 		el.addClass('editing');
@@ -378,7 +372,7 @@
 		str += '<div class="a">';
 		str += '<h1>Status</h1>';
 		str += '<ul class="list">';
-		str += '<li><strong>Madness</strong><input type="text" name="'+status.key+'" value="'+status.val+'" contenteditable="true"></li>';
+		str += '<li><strong>Madness</strong><div contentEditable="true" data-name="'+status.key+'" >'+status.val+'</div></li>';
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
@@ -386,16 +380,16 @@
 		str += '<div class="a">';
 		str += '<h1>Core</h1>';
 		str += '<ul class="list">';
-		// <input type="text" name="'+key+'" value="'+cur+'" contenteditable="true">
-		str += '<li><strong>Class</strong><input type="text" name="'+Class.key+'" value="'+Class.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Level</strong><input type="text" name="'+Level.key+'" value="'+Level.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Race</strong><input type="text" name="'+Race.key+'" value="'+Race.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Size</strong><input type="text" name="'+Size.key+'" value="'+Size.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Gender</strong><input type="text" name="'+Gender.key+'" value="'+Gender.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Alignment</strong><input type="text" name="'+Alignment.key+'" value="'+Alignment.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Height</strong><input type="text" name="'+Height.key+'" value="'+Height.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Weight</strong><input type="text" name="'+Weight.key+'" value="'+Weight.val+'" contenteditable="true"></li>';
-		str += '<li><strong>HP</strong><input type="text" name="'+Hp.key+'" value="'+Hp.val+'" contenteditable="true"></li>';
+		// <input type="text" name="'+key+'" >'+cur+'" contenteditable="true">
+		str += '<li><strong>Class</strong><div contentEditable="true" data-name="'+Class.key+'" >'+Class.val+'</div></li>';
+		str += '<li><strong>Level</strong><div contentEditable="true" data-name="'+Level.key+'" >'+Level.val+'</div></li>';
+		str += '<li><strong>Race</strong><div contentEditable="true" data-name="'+Race.key+'" >'+Race.val+'</div></li>';
+		str += '<li><strong>Size</strong><div contentEditable="true" data-name="'+Size.key+'" >'+Size.val+'</div></li>';
+		str += '<li><strong>Gender</strong><div contentEditable="true" data-name="'+Gender.key+'" >'+Gender.val+'</div></li>';
+		str += '<li><strong>Alignment</strong><div contentEditable="true" data-name="'+Alignment.key+'" >'+Alignment.val+'</div></li>';
+		str += '<li><strong>Height</strong><div contentEditable="true" data-name="'+Height.key+'" >'+Height.val+'</div></li>';
+		str += '<li><strong>Weight</strong><div contentEditable="true" data-name="'+Weight.key+'" >'+Weight.val+'</div></li>';
+		str += '<li><strong>HP</strong><div contentEditable="true" data-name="'+Hp.key+'" >'+Hp.val+'</div></li>';
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
@@ -403,15 +397,15 @@
 		str += '<div class="a">';
 		str += '<h1>Ability Scores</h1>';
 		str += '<ul class="list">';
-		str += '<li><strong>Str</strong><input type="text" name="'+stre.key+'" value="'+stre.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Dex</strong><input type="text" name="'+dex.key+'" value="'+dex.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Con</strong><input type="text" name="'+con.key+'" value="'+con.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Int</strong><input type="text" name="'+int.key+'" value="'+int.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Wis</strong><input type="text" name="'+wis.key+'" value="'+wis.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Cha</strong><input type="text" name="'+cha.key+'" value="'+cha.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Speed</strong><input type="text" name="'+speed.key+'" value="'+speed.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Init</strong><input type="text" name="'+init.key+'" value="'+init.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Grapple</strong><input type="text" name="'+grapple.key+'" value="'+grapple.val+'" contenteditable="true"></li>';
+		str += '<li><strong>Str</strong><div contentEditable="true" data-name="'+stre.key+'" >'+stre.val+'</div></li>';
+		str += '<li><strong>Dex</strong><div contentEditable="true" data-name="'+dex.key+'" >'+dex.val+'</div></li>';
+		str += '<li><strong>Con</strong><div contentEditable="true" data-name="'+con.key+'" >'+con.val+'</div></li>';
+		str += '<li><strong>Int</strong><div contentEditable="true" data-name="'+int.key+'" >'+int.val+'</div></li>';
+		str += '<li><strong>Wis</strong><div contentEditable="true" data-name="'+wis.key+'" >'+wis.val+'</div></li>';
+		str += '<li><strong>Cha</strong><div contentEditable="true" data-name="'+cha.key+'" >'+cha.val+'</div></li>';
+		str += '<li><strong>Speed</strong><div contentEditable="true" data-name="'+speed.key+'" >'+speed.val+'</div></li>';
+		str += '<li><strong>Init</strong><div contentEditable="true" data-name="'+init.key+'" >'+init.val+'</div></li>';
+		str += '<li><strong>Grapple</strong><div contentEditable="true" data-name="'+grapple.key+'" >'+grapple.val+'</div></li>';
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
@@ -419,19 +413,19 @@
 		str += '<div class="a">';
 		str += '<h1>Saves / AC</h1>';
 		str += '<ul class="list">';
-		str += '<li><strong>Fort</strong><input type="text" name="'+fort.key+'" value="'+fort.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Refl</strong><input type="text" name="'+refl.key+'" value="'+refl.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Will</strong><input type="text" name="'+will.key+'" value="'+will.val+'" contenteditable="true"></li>';
+		str += '<li><strong>Fort</strong><div contentEditable="true" data-name="'+fort.key+'" >'+fort.val+'</div></li>';
+		str += '<li><strong>Refl</strong><div contentEditable="true" data-name="'+refl.key+'" >'+refl.val+'</div></li>';
+		str += '<li><strong>Will</strong><div contentEditable="true" data-name="'+will.key+'" >'+will.val+'</div></li>';
 		str += '<li class="empty"></li>';
-		str += '<li><strong>AC</strong><input type="text" name="'+ac.key+'" value="'+ac.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Flat AC</strong><input type="text" name="'+flat.key+'" value="'+flat.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Touch AC</strong><input type="text" name="'+touch.key+'" value="'+touch.val+'" contenteditable="true"></li>';
+		str += '<li><strong>AC</strong><div contentEditable="true" data-name="'+ac.key+'" >'+ac.val+'</div></li>';
+		str += '<li><strong>Flat AC</strong><div contentEditable="true" data-name="'+flat.key+'" >'+flat.val+'</div></li>';
+		str += '<li><strong>Touch AC</strong><div contentEditable="true" data-name="'+touch.key+'" >'+touch.val+'</div></li>';
 		str += '<li class="empty"></li>';
-		str += '<li><strong>Armor</strong><input type="text" name="'+arm.key+'" value="'+arm.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Arm Class</strong><input type="text" name="'+armClass.key+'" value="'+armClass.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Arm Stat+</strong><input type="text" name="'+armBonus.key+'" value="'+armBonus.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Arm Penalty</strong><input type="text" name="'+armPenalty.key+'" value="'+armPenalty.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Arm Weight</strong><input type="text" name="'+armWeight.key+'" value="'+armWeight.val+'" contenteditable="true"></li>';
+		str += '<li><strong>Armor</strong><div contentEditable="true" data-name="'+arm.key+'" >'+arm.val+'</div></li>';
+		str += '<li><strong>Arm Class</strong><div contentEditable="true" data-name="'+armClass.key+'" >'+armClass.val+'</div></li>';
+		str += '<li><strong>Arm Stat+</strong><div contentEditable="true" data-name="'+armBonus.key+'" >'+armBonus.val+'</div></li>';
+		str += '<li><strong>Arm Penalty</strong><div contentEditable="true" data-name="'+armPenalty.key+'" >'+armPenalty.val+'</div></li>';
+		str += '<li><strong>Arm Weight</strong><div contentEditable="true" data-name="'+armWeight.key+'" >'+armWeight.val+'</div></li>';
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
@@ -439,18 +433,18 @@
 		str += '<div class="a">';
 		str += '<h1>Items Worn</h1>';
 		str += '<ul class="list">';
-		str += '<li><strong>Head</strong><input type="text" name="'+wHead.key+'" value="'+wHead.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Eyes</strong><input type="text" name="'+wEyes.key+'" value="'+wEyes.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Neck</strong><input type="text" name="'+wNeck.key+'" value="'+wNeck.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Shoulders</strong><input type="text" name="'+wShoulders.key+'" value="'+wShoulders.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Ring 1</strong><input type="text" name="'+wRing1.key+'" value="'+wRing1.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Ring 2</strong><input type="text" name="'+wRing2.key+'" value="'+wRing2.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Hands</strong><input type="text" name="'+wHands.key+'" value="'+wHands.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Wrists</strong><input type="text" name="'+wWrists.key+'" value="'+wWrists.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Body</strong><input type="text" name="'+wBody.key+'" value="'+wBody.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Torso</strong><input type="text" name="'+wTorso.key+'" value="'+wTorso.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Waist</strong><input type="text" name="'+wWaist.key+'" value="'+wWaist.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Feet</strong><input type="text" name="'+wFeet.key+'" value="'+wFeet.val+'" contenteditable="true"></li>';
+		str += '<li><strong>Head</strong><div contentEditable="true" data-name="'+wHead.key+'" >'+wHead.val+'</div></li>';
+		str += '<li><strong>Eyes</strong><div contentEditable="true" data-name="'+wEyes.key+'" >'+wEyes.val+'</div></li>';
+		str += '<li><strong>Neck</strong><div contentEditable="true" data-name="'+wNeck.key+'" >'+wNeck.val+'</div></li>';
+		str += '<li><strong>Shoulders</strong><div contentEditable="true" data-name="'+wShoulders.key+'" >'+wShoulders.val+'</div></li>';
+		str += '<li><strong>Ring 1</strong><div contentEditable="true" data-name="'+wRing1.key+'" >'+wRing1.val+'</div></li>';
+		str += '<li><strong>Ring 2</strong><div contentEditable="true" data-name="'+wRing2.key+'" >'+wRing2.val+'</div></li>';
+		str += '<li><strong>Hands</strong><div contentEditable="true" data-name="'+wHands.key+'" >'+wHands.val+'</div></li>';
+		str += '<li><strong>Wrists</strong><div contentEditable="true" data-name="'+wWrists.key+'" >'+wWrists.val+'</div></li>';
+		str += '<li><strong>Body</strong><div contentEditable="true" data-name="'+wBody.key+'" >'+wBody.val+'</div></li>';
+		str += '<li><strong>Torso</strong><div contentEditable="true" data-name="'+wTorso.key+'" >'+wTorso.val+'</div></li>';
+		str += '<li><strong>Waist</strong><div contentEditable="true" data-name="'+wWaist.key+'" >'+wWaist.val+'</div></li>';
+		str += '<li><strong>Feet</strong><div contentEditable="true" data-name="'+wFeet.key+'" >'+wFeet.val+'</div></li>';
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';		
@@ -458,20 +452,40 @@
 		str += '<div class="a">';
 		str += '<h1>Weapons / Sheilds</h1>';
 		str += '<ul class="list">';
-		str += '<li><strong>Slot 1</strong><input type="text" name="'+w1.key+'" value="'+w1.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Slot 2</strong><input type="text" name="'+w2.key+'" value="'+w2.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Slot 3</strong><input type="text" name="'+w3.key+'" value="'+w3.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Slot 4</strong><input type="text" name="'+w4.key+'" value="'+w4.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Slot 5</strong><input type="text" name="'+w5.key+'" value="'+w5.val+'" contenteditable="true"></li>';
-		str += '<li><strong>Shield Slot</strong><input type="text" name="'+w6.key+'" value="'+w6.val+'" contenteditable="true"></li>';		
+		str += '<li><strong>Slot 1</strong><div contentEditable="true" data-name="'+w1.key+'" >'+w1.val+'</div></li>';
+		str += '<li><strong>Slot 2</strong><div contentEditable="true" data-name="'+w2.key+'" >'+w2.val+'</div></li>';
+		str += '<li><strong>Slot 3</strong><div contentEditable="true" data-name="'+w3.key+'" >'+w3.val+'</div></li>';
+		str += '<li><strong>Slot 4</strong><div contentEditable="true" data-name="'+w4.key+'" >'+w4.val+'</div></li>';
+		str += '<li><strong>Slot 5</strong><div contentEditable="true" data-name="'+w5.key+'" >'+w5.val+'</div></li>';
+		str += '<li><strong>Shield Slot</strong><div contentEditable="true" data-name="'+w6.key+'" >'+w6.val+'</div></li>';		
+		str += '</ul>';
+		str += '</div>';
+		str += '</div>';
+		str += '<div class="one ammo">';
+		str += '<div class="a">';
+		str += '<h1>Ammunition</h1>';
+		str += '<ul class="list">';	
+		str += '</ul>';
+		str += '</div>';
+		str += '</div>';
+		str += '<div class="one Spells">';
+		str += '<div class="a">';
+		str += '<h1>Spells</h1>';
+		str += '<ul class="list">';	
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
 		str += '<div class="one Feats">';
 		str += '<div class="a">';
 		str += '<h1>Feats</h1>';
+		str += '<ul class="list">';	
+		str += '</ul>';
+		str += '</div>';
+		str += '</div>';
+		str += '<div class="one Skills">';
+		str += '<div class="a">';
+		str += '<h1>Skills</h1>';
 		str += '<ul class="list">';
-		str += '<li><strong>Feat 1</strong><input type="text" name="'+f1.key+'" value="'+f1.val+'" contenteditable="true"></li>';			
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
