@@ -467,7 +467,6 @@
 		str += '<li><strong>Slot 3</strong><span class="node">'+wNeck+'</span></li>';
 		str += '<li><strong>Slot 4</strong><span class="node">'+wShoulders+'</span></li>';
 		str += '<li><strong>Slot 5</strong><span class="node">'+wRing1+'</span></li>';
-		str += '<li><strong>Slot 6</strong><span class="node">'+wRing2+'</span></li>';
 		str += '<li><strong>Shield Slot</strong><span class="node">'+wHands+'</span></li>';		
 		str += '</ul>';
 		str += '</div>';
