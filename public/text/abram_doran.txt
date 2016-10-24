@@ -93,13 +93,13 @@ Inventory:
 - 1x Spell Component Pouch
 -- 716g 800s
 - Pouch (Red, Green, Black Idols. 4 keys)
-- White Crown, Red Blade, Skeleton Skull, Black scycle keys.
 - 3 Edible mushrooms
 - Old dried meat in a bag salt x 10 (5 days)
 - 3 Edible moss
 - 5 larva hand sized
-- 9x Days Rashions(Jerkey)
+- 8x Days Rashions(Jerkey)
 - 1x Flask of Ooze Jelly Blue
+- 2 Days rations?
 
 Other Items Owned:
 - 
@@ -249,8 +249,8 @@ Madness - 19
 - AC +2
 - Hide +5
 - 4 copper, Crossbow 1d6
-- Blessed +2 AC/Save/Atk/Atk-Roll
 - 20ft coiled wire
+- Zereza, Cloud Giant | Good at Melee and Magic
 
 Spirit Abram:
 HP - /
@@ -275,7 +275,7 @@ William:
 HP - 37
 
 Notes:
-- Fauna, The Gnome Sorceress.
+- Fana, The Gnome Sorceress.
 - Standing by altar. Orbs seen. Alter of offering. Square intent for an idol. Avoid battle axe. See red hulking figure. Flames engulf me.
 - Masked lady is a Cleric.
 - Beholder in final room.
