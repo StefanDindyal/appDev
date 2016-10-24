@@ -431,6 +431,9 @@ form input[type="submit"] {
 #view .node {
 	cursor: pointer;
 }
+#view .equiped ul li {
+	width: 100%;
+} 
 #footer {
 	text-align: center;
 	font-size: 14px;
