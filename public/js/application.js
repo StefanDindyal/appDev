@@ -365,7 +365,7 @@
 			armBonus = getStatData(snap, 'armbonus'),
 			armPenalty = getStatData(snap, 'armpenalty'),
 			armWeight = getStatData(snap, 'armweight'),
-			status = getStatData(snap, 'status'),
+			status = getStatData(snap, 'madness'),
 			wHead = getStatData(snap, 'head'),
 			wEyes = getStatData(snap, 'eyes'),
 			wNeck = getStatData(snap, 'neck'),
@@ -378,6 +378,13 @@
 			wTorso = getStatData(snap, 'torso'),
 			wWaist = getStatData(snap, 'waist'),
 			wFeet = getStatData(snap, 'feet'),
+			w1 = getStatData(snap, 'slot1'),
+			w2 = getStatData(snap, 'slot2'),
+			w3 = getStatData(snap, 'slot3'),
+			w4 = getStatData(snap, 'slot4'),
+			w5 = getStatData(snap, 'slot5'),
+			w6 = getStatData(snap, 'shieldslot'),
+			f1 = getStatData(snap, 'feat1'),			
 			str = '';
 		str += '<div class="one status">';
 		str += '<div class="a">';
@@ -457,17 +464,25 @@
 		str += '<li><strong>Feet</strong><span class="node">'+wFeet+'</span></li>';
 		str += '</ul>';
 		str += '</div>';
-		str += '</div>';
+		str += '</div>';		
 		str += '<div class="one equiped">';
 		str += '<div class="a">';
 		str += '<h1>Weapons / Sheilds</h1>';
 		str += '<ul class="list">';
-		str += '<li><strong>Slot 1</strong><span class="node">'+wHead+'</span></li>';
-		str += '<li><strong>Slot 2</strong><span class="node">'+wEyes+'</span></li>';
-		str += '<li><strong>Slot 3</strong><span class="node">'+wNeck+'</span></li>';
-		str += '<li><strong>Slot 4</strong><span class="node">'+wShoulders+'</span></li>';
-		str += '<li><strong>Slot 5</strong><span class="node">'+wRing1+'</span></li>';
-		str += '<li><strong>Shield Slot</strong><span class="node">'+wHands+'</span></li>';		
+		str += '<li><strong>Slot 1</strong><span class="node">'+w1+'</span></li>';
+		str += '<li><strong>Slot 2</strong><span class="node">'+w2+'</span></li>';
+		str += '<li><strong>Slot 3</strong><span class="node">'+w3+'</span></li>';
+		str += '<li><strong>Slot 4</strong><span class="node">'+w4+'</span></li>';
+		str += '<li><strong>Slot 5</strong><span class="node">'+w5+'</span></li>';
+		str += '<li><strong>Shield Slot</strong><span class="node">'+w6+'</span></li>';		
+		str += '</ul>';
+		str += '</div>';
+		str += '</div>';
+		str += '<div class="one Feats">';
+		str += '<div class="a">';
+		str += '<h1>Feats</h1>';
+		str += '<ul class="list">';
+		str += '<li><strong>Feat 1</strong><span class="node">'+f1+'</span></li>';			
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
