@@ -413,8 +413,11 @@ form input[type="submit"] {
 	background-color: transparent;
 	border: 0;
 	color: #f1f1f1;
-	border-bottom: 1px solid #f1f1f1;
+	border-bottom: 1px solid transparent;
 	outline: none;
+}
+#view .one li.editing input {
+	border-bottom: 1px solid #f1f1f1;
 }
 #view .one li ::-webkit-input-placeholder {
    color: #f1f1f1;
