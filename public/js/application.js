@@ -164,7 +164,7 @@
 			$('#view .contents').append(str);
 		});
 
-		stats.child(char).once('value', function(snapshot){
+		stats.child(char).on('value', function(snapshot){
 			if(snapshot.val() == null){
 				stats.child(char).set('').then(function(snapshot){
 					$('#view .basic .weld').html(showAllStats(snapshot));
@@ -396,9 +396,9 @@
 		str += '<li><strong>Int</strong><div contentEditable="true" data-name="'+int.key+'" >'+int.val+'</div><span class="mod">&nbsp;'+getMod(int.val)+'</span></li>';
 		str += '<li><strong>Wis</strong><div contentEditable="true" data-name="'+wis.key+'" >'+wis.val+'</div><span class="mod">&nbsp;'+getMod(wis.val)+'</span></li>';
 		str += '<li><strong>Cha</strong><div contentEditable="true" data-name="'+cha.key+'" >'+cha.val+'</div><span class="mod">&nbsp;'+getMod(cha.val)+'</span></li>';
-		str += '<li><strong>Speed</strong><div contentEditable="true" data-name="'+speed.key+'" >'+speed.val+'</div></li>';
-		str += '<li><strong>Init</strong><div contentEditable="true" data-name="'+init.key+'" >'+init.val+'</div></li>';
-		str += '<li><strong>Grapple</strong><div contentEditable="true" data-name="'+grapple.key+'" >'+grapple.val+'</div></li>';
+		str += '<li><strong>Speed</strong><div contentEditable="true" data-name="'+speed.key+'" >'+speed.val+'</div><span class="mod">&nbsp;ft</span></li>';
+		str += '<li><strong>Init</strong><span class="mod">+</span><div contentEditable="true" data-name="'+init.key+'" >'+init.val+'</div></li>';
+		str += '<li><strong>Grapple</strong><span class="mod">+</span><div contentEditable="true" data-name="'+grapple.key+'" >'+grapple.val+'</div></li>';
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
