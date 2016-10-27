@@ -418,6 +418,16 @@ form input[type="submit"] {
 	outline: none;
 	resize: none;
 }
+#view .one.ability li div {
+	display: inline-block;
+	width: auto;
+	vertical-align: top;
+}
+#view .one.ability li .mod {
+	display: inline-block;
+	width: auto;
+	vertical-align: top;
+}
 #view .one li.editing div {
 	border-bottom: 1px solid #f1f1f1;
 }

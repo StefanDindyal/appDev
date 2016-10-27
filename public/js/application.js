@@ -178,8 +178,7 @@
 		$('#view').slideDown(300);
 	});
 
-	$(document).on('click', '#view .close', function(){
-		console.log('closed');				
+	$(document).on('click', '#view .close', function(){		
 		$('#view').slideUp(300, function(){
 			$('body').removeClass('cut');
 			$('#view .contents .basic').remove();
@@ -315,58 +314,25 @@
 			str += '</div></li>';
 		});
 		return str;
+	}	
+
+	function showAllStats(snap){									
+		var str = '';
+		str += getStatus(snap);
+		str += getCore(snap);
+		str += getAbility(snap);
+		str += getDefence(snap);
+		str += getItems(snap);
+		str += getWeapons(snap);		
+		str += getAmmo(snap);
+		str += getSpells(snap);
+		str += getFeats(snap);
+		str += getSkills(snap);
+		return str;
 	}
 
-	function showAllStats(snap){
-		var Class = getStatData(snap, 'class'),
-			Level = getStatData(snap, 'level'),
-			Race = getStatData(snap, 'race'),
-			Size = getStatData(snap, 'size'),
-			Gender = getStatData(snap, 'gender'),
-			Alignment = getStatData(snap, 'alignment'),
-			Height = getStatData(snap, 'height'),
-			Weight = getStatData(snap, 'weight'),
-			Hp = getStatData(snap, 'hp'),
-			stre = getStatData(snap, 'str'),
-			dex = getStatData(snap, 'dex'),
-			con = getStatData(snap, 'con'),
-			int = getStatData(snap, 'int'),
-			wis = getStatData(snap, 'wis'),
-			cha = getStatData(snap, 'cha'),
-			speed = getStatData(snap, 'speed'),
-			init = getStatData(snap, 'init'),
-			grapple = getStatData(snap, 'grapple'),
-			fort = getStatData(snap, 'fort'),
-			refl = getStatData(snap, 'refl'),
-			will = getStatData(snap, 'will'),
-			ac = getStatData(snap, 'ac'),
-			flat = getStatData(snap, 'flatac'),
-			touch = getStatData(snap, 'touchac'),
-			arm = getStatData(snap, 'armor'),
-			armClass = getStatData(snap, 'armclass'),
-			armBonus = getStatData(snap, 'armbonus'),
-			armPenalty = getStatData(snap, 'armpenalty'),
-			armWeight = getStatData(snap, 'armweight'),
-			status = getStatData(snap, 'madness'),
-			wHead = getStatData(snap, 'head'),
-			wEyes = getStatData(snap, 'eyes'),
-			wNeck = getStatData(snap, 'neck'),
-			wShoulders = getStatData(snap, 'shoulders'),
-			wRing1 = getStatData(snap, 'ring1'),
-			wRing2 = getStatData(snap, 'ring2'),
-			wHands = getStatData(snap, 'hands'),
-			wWrists = getStatData(snap, 'wrists'),
-			wBody = getStatData(snap, 'body'),
-			wTorso = getStatData(snap, 'torso'),
-			wWaist = getStatData(snap, 'waist'),
-			wFeet = getStatData(snap, 'feet'),
-			w1 = getStatData(snap, 'slot1'),
-			w2 = getStatData(snap, 'slot2'),
-			w3 = getStatData(snap, 'slot3'),
-			w4 = getStatData(snap, 'slot4'),
-			w5 = getStatData(snap, 'slot5'),
-			w6 = getStatData(snap, 'shieldslot'),
-			f1 = getStatData(snap, 'feat1'),			
+	function getStatus(snap){
+		var status = getStatData(snap, 'madness'),
 			str = '';
 		str += '<div class="one status">';
 		str += '<div class="a">';
@@ -376,11 +342,24 @@
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
+		return str;
+	}
+
+	function getCore(snap){
+		var Class = getStatData(snap, 'class'),
+			Level = getStatData(snap, 'level'),
+			Race = getStatData(snap, 'race'),
+			Size = getStatData(snap, 'size'),
+			Gender = getStatData(snap, 'gender'),
+			Alignment = getStatData(snap, 'alignment'),
+			Height = getStatData(snap, 'height'),
+			Weight = getStatData(snap, 'weight'),
+			Hp = getStatData(snap, 'hp'),
+			str = '';
 		str += '<div class="one base">';
 		str += '<div class="a">';
 		str += '<h1>Core</h1>';
 		str += '<ul class="list">';
-		// <input type="text" name="'+key+'" >'+cur+'" contenteditable="true">
 		str += '<li><strong>Class</strong><div contentEditable="true" data-name="'+Class.key+'" >'+Class.val+'</div></li>';
 		str += '<li><strong>Level</strong><div contentEditable="true" data-name="'+Level.key+'" >'+Level.val+'</div></li>';
 		str += '<li><strong>Race</strong><div contentEditable="true" data-name="'+Race.key+'" >'+Race.val+'</div></li>';
@@ -393,22 +372,52 @@
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
+		return str;
+	}
+
+	function getAbility(snap){
+		var stre = getStatData(snap, 'str'),
+			dex = getStatData(snap, 'dex'),
+			con = getStatData(snap, 'con'),
+			int = getStatData(snap, 'int'),
+			wis = getStatData(snap, 'wis'),
+			cha = getStatData(snap, 'cha'),
+			speed = getStatData(snap, 'speed'),
+			init = getStatData(snap, 'init'),
+			grapple = getStatData(snap, 'grapple'),
+			str = '';
 		str += '<div class="one ability">';
 		str += '<div class="a">';
 		str += '<h1>Ability Scores</h1>';
 		str += '<ul class="list">';
-		str += '<li><strong>Str</strong><div contentEditable="true" data-name="'+stre.key+'" >'+stre.val+'</div></li>';
-		str += '<li><strong>Dex</strong><div contentEditable="true" data-name="'+dex.key+'" >'+dex.val+'</div></li>';
-		str += '<li><strong>Con</strong><div contentEditable="true" data-name="'+con.key+'" >'+con.val+'</div></li>';
-		str += '<li><strong>Int</strong><div contentEditable="true" data-name="'+int.key+'" >'+int.val+'</div></li>';
-		str += '<li><strong>Wis</strong><div contentEditable="true" data-name="'+wis.key+'" >'+wis.val+'</div></li>';
-		str += '<li><strong>Cha</strong><div contentEditable="true" data-name="'+cha.key+'" >'+cha.val+'</div></li>';
+		str += '<li><strong>Str</strong><div contentEditable="true" data-name="'+stre.key+'" >'+stre.val+'</div><span class="mod">&nbsp;'+getMod(stre.val)+'</span></li>';
+		str += '<li><strong>Dex</strong><div contentEditable="true" data-name="'+dex.key+'" >'+dex.val+'</div><span class="mod">&nbsp;'+getMod(dex.val)+'</span></li>';
+		str += '<li><strong>Con</strong><div contentEditable="true" data-name="'+con.key+'" >'+con.val+'</div><span class="mod">&nbsp;'+getMod(con.val)+'</span></li>';
+		str += '<li><strong>Int</strong><div contentEditable="true" data-name="'+int.key+'" >'+int.val+'</div><span class="mod">&nbsp;'+getMod(int.val)+'</span></li>';
+		str += '<li><strong>Wis</strong><div contentEditable="true" data-name="'+wis.key+'" >'+wis.val+'</div><span class="mod">&nbsp;'+getMod(wis.val)+'</span></li>';
+		str += '<li><strong>Cha</strong><div contentEditable="true" data-name="'+cha.key+'" >'+cha.val+'</div><span class="mod">&nbsp;'+getMod(cha.val)+'</span></li>';
 		str += '<li><strong>Speed</strong><div contentEditable="true" data-name="'+speed.key+'" >'+speed.val+'</div></li>';
 		str += '<li><strong>Init</strong><div contentEditable="true" data-name="'+init.key+'" >'+init.val+'</div></li>';
 		str += '<li><strong>Grapple</strong><div contentEditable="true" data-name="'+grapple.key+'" >'+grapple.val+'</div></li>';
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
+		return str;
+	}
+
+	function getDefence(snap){
+		var fort = getStatData(snap, 'fort'),
+			refl = getStatData(snap, 'refl'),
+			will = getStatData(snap, 'will'),
+			ac = getStatData(snap, 'ac'),
+			flat = getStatData(snap, 'flatac'),
+			touch = getStatData(snap, 'touchac'),
+			arm = getStatData(snap, 'armor'),
+			armClass = getStatData(snap, 'armclass'),
+			armBonus = getStatData(snap, 'armbonus'),
+			armPenalty = getStatData(snap, 'armpenalty'),
+			armWeight = getStatData(snap, 'armweight'),
+			str = '';
 		str += '<div class="one defence">';
 		str += '<div class="a">';
 		str += '<h1>Saves / AC</h1>';
@@ -429,6 +438,23 @@
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
+		return str;
+	}
+
+	function getItems(snap){
+		var wHead = getStatData(snap, 'head'),
+			wEyes = getStatData(snap, 'eyes'),
+			wNeck = getStatData(snap, 'neck'),
+			wShoulders = getStatData(snap, 'shoulders'),
+			wRing1 = getStatData(snap, 'ring1'),
+			wRing2 = getStatData(snap, 'ring2'),
+			wHands = getStatData(snap, 'hands'),
+			wWrists = getStatData(snap, 'wrists'),
+			wBody = getStatData(snap, 'body'),
+			wTorso = getStatData(snap, 'torso'),
+			wWaist = getStatData(snap, 'waist'),
+			wFeet = getStatData(snap, 'feet'),
+			str = '';
 		str += '<div class="one worn">';
 		str += '<div class="a">';
 		str += '<h1>Items Worn</h1>';
@@ -447,7 +473,18 @@
 		str += '<li><strong>Feet</strong><div contentEditable="true" data-name="'+wFeet.key+'" >'+wFeet.val+'</div></li>';
 		str += '</ul>';
 		str += '</div>';
-		str += '</div>';		
+		str += '</div>';
+		return str;
+	}
+
+	function getWeapons(snap){
+		var w1 = getStatData(snap, 'slot1'),
+			w2 = getStatData(snap, 'slot2'),
+			w3 = getStatData(snap, 'slot3'),
+			w4 = getStatData(snap, 'slot4'),
+			w5 = getStatData(snap, 'slot5'),
+			w6 = getStatData(snap, 'shieldslot'),
+			str = '';
 		str += '<div class="one equiped">';
 		str += '<div class="a">';
 		str += '<h1>Weapons / Sheilds</h1>';
@@ -461,6 +498,11 @@
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
+		return str;
+	}
+
+	function getAmmo(snap){
+		var str = '';
 		str += '<div class="one ammo">';
 		str += '<div class="a">';
 		str += '<h1>Ammunition</h1>';
@@ -468,6 +510,11 @@
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
+		return str;
+	}
+
+	function getSpells(snap){
+		var str = '';
 		str += '<div class="one Spells">';
 		str += '<div class="a">';
 		str += '<h1>Spells</h1>';
@@ -475,13 +522,23 @@
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
+		return str;
+	}
+
+	function getFeats(snap){
+		var str = '';
 		str += '<div class="one Feats">';
 		str += '<div class="a">';
 		str += '<h1>Feats</h1>';
 		str += '<ul class="list">';	
 		str += '</ul>';
 		str += '</div>';
-		str += '</div>';
+		str += '</div>';		
+		return str;
+	}
+
+	function getSkills(snap){
+		var str = '';
 		str += '<div class="one Skills">';
 		str += '<div class="a">';
 		str += '<h1>Skills</h1>';
@@ -507,6 +564,15 @@
 			key: name,
 			val: str
 		}
+	}
+
+	function getMod(ability){
+		var ability = (ability*1) || 0, mod = 0, str = '(+0)';
+		if(ability > 10){
+			mod = Math.floor((ability - 10)/2);
+			str = '(+'+mod+')';
+		}
+		return str;
 	}
 
 })(jQuery);
