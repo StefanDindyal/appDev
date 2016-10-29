@@ -363,6 +363,12 @@ form input[type="submit"] {
 	border: 0;
 	border-bottom: 1px solid #30ffe4;
 }
+#view .one .add {
+}
+#view .one .add a {
+	color: #ffbd30;
+	font-weight: bold;
+}
 #view .one ul {
 	width: 100%;
 	margin-bottom: 0;
