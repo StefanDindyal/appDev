@@ -511,6 +511,7 @@
 		str += '<div class="one ammo">';
 		str += '<div class="a">';
 		str += '<h1>Ammunition</h1>';
+		str += '<div class="add"><a href="#">+ Add Ammo</a></div>';
 		str += '<ul class="list">';	
 		str += '</ul>';
 		str += '</div>';
@@ -523,6 +524,7 @@
 		str += '<div class="one spells">';
 		str += '<div class="a">';
 		str += '<h1>Spells</h1>';
+		str += '<div class="add"><a href="#">+ Add Spells</a></div>';
 		str += '<ul class="list">';	
 		str += '</ul>';
 		str += '</div>';
@@ -535,6 +537,7 @@
 		str += '<div class="one feats">';
 		str += '<div class="a">';
 		str += '<h1>Feats</h1>';
+		str += '<div class="add"><a href="#">+ Add Feats</a></div>';
 		str += '<ul class="list">';	
 		str += '</ul>';
 		str += '</div>';
@@ -547,6 +550,7 @@
 		str += '<div class="one skills">';
 		str += '<div class="a">';
 		str += '<h1>Skills</h1>';
+		str += '<div class="add"><a href="#">+ Add Skills</a></div>';
 		str += '<ul class="list">';
 		str += '</ul>';
 		str += '</div>';
