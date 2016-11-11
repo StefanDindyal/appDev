@@ -490,10 +490,15 @@
 		str += '<h1>Weapons / Sheilds</h1>';
 		str += '<ul class="list">';
 		str += '<li><strong>Slot 1</strong><div contentEditable="true" data-name="'+w1.key+'" >'+w1.val+'</div></li>';
+		str += '<li class="empty"></li>';
 		str += '<li><strong>Slot 2</strong><div contentEditable="true" data-name="'+w2.key+'" >'+w2.val+'</div></li>';
+		str += '<li class="empty"></li>';
 		str += '<li><strong>Slot 3</strong><div contentEditable="true" data-name="'+w3.key+'" >'+w3.val+'</div></li>';
+		str += '<li class="empty"></li>';
 		str += '<li><strong>Slot 4</strong><div contentEditable="true" data-name="'+w4.key+'" >'+w4.val+'</div></li>';
+		str += '<li class="empty"></li>';
 		str += '<li><strong>Slot 5</strong><div contentEditable="true" data-name="'+w5.key+'" >'+w5.val+'</div></li>';
+		str += '<li class="empty"></li>';
 		str += '<li><strong>Shield Slot</strong><div contentEditable="true" data-name="'+w6.key+'" >'+w6.val+'</div></li>';		
 		str += '</ul>';
 		str += '</div>';
@@ -515,7 +520,7 @@
 
 	function getSpells(snap){
 		var str = '';
-		str += '<div class="one Spells">';
+		str += '<div class="one spells">';
 		str += '<div class="a">';
 		str += '<h1>Spells</h1>';
 		str += '<ul class="list">';	
@@ -527,7 +532,7 @@
 
 	function getFeats(snap){
 		var str = '';
-		str += '<div class="one Feats">';
+		str += '<div class="one feats">';
 		str += '<div class="a">';
 		str += '<h1>Feats</h1>';
 		str += '<ul class="list">';	
@@ -539,9 +544,21 @@
 
 	function getSkills(snap){
 		var str = '';
-		str += '<div class="one Skills">';
+		str += '<div class="one skills">';
 		str += '<div class="a">';
 		str += '<h1>Skills</h1>';
+		str += '<ul class="list">';
+		str += '</ul>';
+		str += '</div>';
+		str += '</div>';
+		return str;
+	}
+
+	function getBag(snap){
+		var str = '';
+		str += '<div class="one bag">';
+		str += '<div class="a">';
+		str += '<h1>Inventory</h1>';
 		str += '<ul class="list">';
 		str += '</ul>';
 		str += '</div>';
