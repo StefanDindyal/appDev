@@ -328,6 +328,7 @@
 		str += getSpells(snap);
 		str += getFeats(snap);
 		str += getSkills(snap);
+		str += getBag(snap);
 		return str;
 	}
 
@@ -563,6 +564,7 @@
 		str += '<div class="one bag">';
 		str += '<div class="a">';
 		str += '<h1>Inventory</h1>';
+		str += '<div class="add"><a href="#">+ Add Item</a></div>';
 		str += '<ul class="list">';
 		str += '</ul>';
 		str += '</div>';
@@ -595,5 +597,12 @@
 		}
 		return str;
 	}
+
+	function takeOverWorld(msg){
+		var str = msg || 'Doles';
+		return str;
+	}
+
+	console.log(takeOverWorld('liquid licks and squish picks. oh wondrous lips and moist tips. dripping dripping, oh how they drip.'));
 
 })(jQuery);
