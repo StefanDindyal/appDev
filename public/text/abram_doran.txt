@@ -14,7 +14,7 @@ HP: 66
 
 Ability Scores:
 Str: 10 +0
-Dex: 19 +3
+Dex: 19 +4
 Con: 13 +1
 Int: 16 +2
 Wis: 17 +2
@@ -51,7 +51,7 @@ Waist -
 Feet -
 
 Status:
-Madness: 15
+Madness: 21
 
 Equiped:
 - Dagger | +6 | 1d4 | x2 19 - 20 | Close Range | Pierce | Momento of Sister
@@ -70,6 +70,8 @@ Inventory:
 - 4x Poison Glands (Ambush Drake Gland)
 - 12x Fangs/Claws
 - 2x Water Skins
+- 9 liters of water Scaled Water Skin
+- 2 liters of water Cleansed Raw Hide Skin
 - 7x Arrow Shafts
 - 5x Helhound Spines
 - 1x Helhound Hide
@@ -114,9 +116,9 @@ Spells:
 2nd lvl - Cats Grace, Windwall
 
 Spells/Day:
-1 - 3
-2 - 3
-3 - 1
+1 lvl 3
+3 lvl 2
+3 lvl 1
 
 Racial Traits:
 - Favored Enemy Undead +4
@@ -144,7 +146,7 @@ Languages:
 Animal Companion:
 Name - William Turner
 Type - Vermin
-HP - 31
+HP - 37
 Str - 13
 Dex - 15
 Con - 10
@@ -232,9 +234,16 @@ Use Rope +12
 Session //////////////////////////////////////////
 
 Abram:
-HP - 44
-Arrows - 49
-Madness - 19
+HP - 66 > 
+Arrows - 38
+Madness - 15
+Handle Animal +12
+Use Rope +12
+Spot +13
+Survival +13
+Search +13
+Listen +13
+Move Silently +13
 - 3 Potions
 - 8 Oiled Arrows
 - 2 Infernal Arrows
@@ -242,15 +251,37 @@ Madness - 19
 - 3 lvl 2
 - 3 lvl 1
 - Negotiator +2
--- 588g 897s
+-- 1000p 1088g 1397s
 - Red Idol Ball of Tendrils
 - Purple Idol Tenticles
 - Black Idol Flesh
+- Green Fixed Idol
 - AC +2
 - Hide +5
 - 4 copper, Crossbow 1d6
 - 20ft coiled wire
-- Zereza, Cloud Giant | Good at Melee and Magic
+- Zereza, Cloud Giant | Good at Melee and Magic | Pounding Barthos
+- Talimus
+- 2 pounds of Giant Snake Meat
+- 5 chunks of hell hound meat
+- 6 hell hound spines
+
+William:
+HP - 37
+Fortitude Save - +3
+Reflex Save - +3
+Will Save - +1
+Initiative - +2
+Speed - 40ft
+AC - 14
+Touch - 11
+Flat - 12
+Alignment - Neutral
+Grapple Modifier - +7
+Personality - Happy
+Reach - 10ft
+Attacks - Bite | +3 | 1d8+1 (Poison) | 20 crit
+Skills - Climb +10 | Spot +4 | Hide +6
 
 Spirit Abram:
 HP - /
@@ -271,13 +302,12 @@ Can still kill body.
 - Hunger for energy | If I grapple and touch 2d4 HP dmg Siphon
 - Can't talk about the spirit
 
-William:
-HP - 37
-
 Notes:
 - Fana, The Gnome Sorceress.
 - Standing by altar. Orbs seen. Alter of offering. Square intent for an idol. Avoid battle axe. See red hulking figure. Flames engulf me.
-- Masked lady is a Cleric.
+- Masked lady is a Cleric?
 - Beholder in final room.
-- All crusaders dead.
+- All crusaders dead...
 - Now in the real cave. A maze.
+- Get look from Facebook.
+
