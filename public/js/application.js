@@ -11,7 +11,7 @@
 
 	// Update view when database is updated
 	characters.on('value', function(snapshot) {
-		$('#characters .list').html(charIntro(snapshot));
+		$('#characters > .list').html(charIntro(snapshot));
 	});
 
 	// Form submit data to database and upload avatar image
@@ -178,6 +178,7 @@
 		$('#view').slideDown(300);
 	});
 
+	// Close Stats
 	$(document).on('click', '#view .close', function(){		
 		$('#view').slideUp(300, function(){
 			$('body').removeClass('cut');
