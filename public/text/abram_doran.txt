@@ -70,6 +70,8 @@ Inventory:
 - 4x Poison Glands (Ambush Drake Gland)
 - 12x Fangs/Claws
 - 2x Water Skins
+- 9 liters of water Scaled Water Skin
+- 2 liters of water Cleansed Raw Hide Skin
 - 7x Arrow Shafts
 - 5x Helhound Spines
 - 1x Helhound Hide
@@ -232,9 +234,9 @@ Use Rope +12
 Session //////////////////////////////////////////
 
 Abram:
-HP - 66 > 4
+HP - 66 > 
 Arrows - 38
-Madness - 21
+Madness - 15
 Handle Animal +12
 Use Rope +12
 Spot +13
@@ -249,15 +251,20 @@ Move Silently +13
 - 3 lvl 2
 - 3 lvl 1
 - Negotiator +2
--- 588g 897s
+-- 1000p 1088g 1397s
 - Red Idol Ball of Tendrils
 - Purple Idol Tenticles
 - Black Idol Flesh
+- Green Fixed Idol
 - AC +2
 - Hide +5
 - 4 copper, Crossbow 1d6
 - 20ft coiled wire
-- Zereza, Cloud Giant | Good at Melee and Magic
+- Zereza, Cloud Giant | Good at Melee and Magic | Pounding Barthos
+- Talimus
+- 2 pounds of Giant Snake Meat
+- 5 chunks of hell hound meat
+- 6 hell hound spines
 
 William:
 HP - 37
