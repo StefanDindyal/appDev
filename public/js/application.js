@@ -436,7 +436,7 @@
 		str += '<li><strong>Arm Class</strong><div contentEditable="true" data-name="'+armClass.key+'" >'+armClass.val+'</div></li>';
 		str += '<li><strong>Arm Stat+</strong><div contentEditable="true" data-name="'+armBonus.key+'" >'+armBonus.val+'</div></li>';
 		str += '<li><strong>Arm Penalty</strong><div contentEditable="true" data-name="'+armPenalty.key+'" >'+armPenalty.val+'</div></li>';
-		str += '<li><strong>Arm Weight</strong><div contentEditable="true" data-name="'+armWeight.key+'" >'+armWeight.val+'</div></li>';
+		str += '<li><strong>Arm Weight</strong><div contentEditable="true" data-name="'+armWeight.key+'" class="cop">'+armWeight.val+'</div> <span class="cop">lbs</span></li>';
 		str += '</ul>';
 		str += '</div>';
 		str += '</div>';
