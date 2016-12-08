@@ -1,0 +1,196 @@
+#stats {
+	position: fixed;
+	overflow: auto;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #010101;
+}
+#stats .close {
+	color: #fff;
+	font-size: 14px;
+	line-height: 14px;
+	font-weight: 700;
+	padding: 10px;
+	text-align: right;
+}
+.sheet {
+	position: relative;
+	padding: 1%;
+	margin: 0 1% 1%;
+	background-color: #111;
+	font-size: 0;
+	line-height: 0;
+}
+.row {
+	padding: 0;
+	margin: 0 0 10px;
+	background-color: #212121;
+}
+.row:last-child {
+	margin: 0 0 0;
+}
+.cell {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 10px;
+	margin: 0 0 0 0;
+	// background-color: #313131;
+}
+.cell:last-child {
+	margin: 0 0 0 0;
+}
+.cell .cell {
+	padding: 10px;
+	// background-color: #414141;
+}
+.cell .title {
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 18px;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	color: #f1f1f1;
+}
+.data {
+	padding: 0 0;
+	overflow: hidden;
+	margin: 0 0 10px;
+	background-color: #515151;
+}
+.data:last-child {
+	margin: 0 0 0;
+}
+.list {
+	padding: 10px;
+	margin: 0;
+	color: #fff;
+	display: inline-block;
+}
+.list .fill {
+	padding: 10px;
+	background-color: #616161;
+}
+.list span {
+	font-size: 14px;
+	line-height: normal;
+	font-weight: 700;
+	display: inline-block;
+	vertical-align: middle;
+}
+.list p {
+	display: inline-block;
+	font-size: 18px;
+	line-height: 18px;
+	font-weight: 700;
+	vertical-align: middle;
+	margin: 0 0 0 10px;
+	padding: 10px;
+	background-color: #717171;
+	border: 1px solid #313131;
+	border-radius: 5px;
+}
+.thumb {
+	width: 25%;
+}
+.core {
+	width: 75%;
+}
+.core .list {
+	width: 50%; 
+}
+.core .list.name {
+	width: 100%;
+}
+.campaign {
+	width: 100%;
+}
+.campaign .list {
+	width: 100%;
+}
+.scores {
+	width: 50%;
+}
+.ability {
+	width: 100%;
+}
+.ability .list {
+	width: 33.33%;
+}
+.combat {
+	width: 100%;
+}
+.combat .list {
+	width: 33.33%;
+}
+.armor-class {
+	width: 50%;
+}
+.armor-class .list {
+	width: 100%;
+}
+.magic-items {
+	width: 100%;
+}
+.magic-items .list {
+	width: 33.33%;
+}
+.weapons {
+	width: 100%;
+}
+.weapons .list {
+	width: 33.33%;
+}
+.equip {
+	width: 100%;
+}
+.unequip {
+	width: 100%;
+}
+.inventory {
+	width: 100%;
+}
+.bag {
+	width: 50%;
+}
+.cell.pouch {
+	width: 50%;
+	padding: 0;
+}
+.ammo {
+	width: 100%;
+}
+.ammo .list {
+	width: 100%;
+}
+.rashions {
+	width: 100%;
+}
+.rashions .list {
+	width: 100%;
+}
+.race-features {
+	width: 100%;
+}
+.race-features .list {
+	width: 33.33%;
+}
+.feats {
+	width: 50%;
+}
+.feats .list {
+	width: 100%;
+}
+.spells {
+	width: 50%;
+}
+.spells .list {
+	width: 100%;
+}
+.skills {
+	width: 100%;
+}
+.skills .list {
+	width: 33.33%;
+}

@@ -143,49 +143,6 @@
 		e.preventDefault();
 	});
 
-	// More information about character
-	$(document).on('click', '.char h3, .char h4, .char .edge', function(){
-		var char = $(this).parents('.char').attr('data-key');
-		var basic = {};
-		characters.child(char).once('value', function(snapshot){
-			var img = snapshot.child('avatar').val();
-			var firstname = snapshot.child('firstname').val();
-			var lastname = snapshot.child('lastname').val();
-			var campaign = snapshot.child('campaign').val();
-			var name = firstname + ' ' + lastname;
-			var str = '';
-			str += '<div class="basic" data-key="'+char+'">';
-			str += '<div class="wrap"><div class="pic">';
-			str += '<img src="'+img+'"/>';
-			str += '</div>';
-			str += '<div class="over"><div class="name">'+name+'</div>';
-			str += '<div class="campaign">'+campaign+'</div>';
-			str += '</div></div><div class="weld"></div></div>';
-			$('#view .contents').append(str);
-		});
-
-		stats.child(char).on('value', function(snapshot){
-			if(snapshot.val() == null){
-				stats.child(char).set('').then(function(snapshot){
-					$('#view .basic .weld').html(showAllStats(snapshot));
-				});				
-			} else {
-				$('#view .basic .weld').html(showAllStats(snapshot));
-			}
-		});
-
-		$('body').addClass('cut');
-		$('#view').slideDown(300);
-	});
-
-	// Close Stats
-	$(document).on('click', '#view .close', function(){		
-		$('#view').slideUp(300, function(){
-			$('body').removeClass('cut');
-			$('#view .contents .basic').remove();
-		});
-	});
-
 	// Input blur function
 	$(document).on('blur', '#view .one li div', function(e){
 		e.preventDefault();
@@ -215,6 +172,41 @@
 	});
 	Pace.on('done', function(){		
 		$('#loading').fadeOut(250);		
+	});
+
+	// More information about character
+	$(document).on('click', '.char h3, .char h4, .char .edge', function(){
+		var char = $(this).parents('.char').attr('data-key');
+		var basic = {};
+		
+		characters.child(char).once('value', function(snapshot){			
+			var str = '';
+			str += '<div class="basic" data-key="'+char+'">';
+			str += '<div class="weld">';
+			str += '</div></div>';
+			$('#view .contents').append(str);
+		});
+
+		stats.child(char).on('value', function(snapshot){
+			if(snapshot.val() == null){
+				stats.child(char).set('').then(function(snapshot){
+					$('#view .basic .weld').html(showAllStats(snapshot));
+				});				
+			} else {
+				$('#view .basic .weld').html(showAllStats(snapshot));
+			}
+		});
+
+		$('body').addClass('cut');
+		$('#view').slideDown(300);
+	});
+
+	// Close Stats
+	$(document).on('click', '#view .close', function(){		
+		$('#view').slideUp(300, function(){
+			$('body').removeClass('cut');
+			$('#view .contents .basic').remove();
+		});
 	});
 
 	// Add to database function
@@ -319,6 +311,7 @@
 
 	function showAllStats(snap){									
 		var str = '';
+		str += getImg(snap);
 		str += getStatus(snap);
 		str += getCore(snap);
 		str += getAbility(snap);
@@ -330,6 +323,22 @@
 		str += getFeats(snap);
 		str += getSkills(snap);
 		str += getBag(snap);
+		return str;
+	}
+
+	function getImg(snap){
+		var img = getStatData(snap, 'avatar');
+		var firstname = getStatData(snap, 'firstname');
+		var lastname = getStatData(snap, 'lastname');
+		var campaign = getStatData(snap, 'campaign');
+		var name = firstname + ' ' + lastname;
+		var str = '';		
+		str += '<div class="one wrap"><div class="pic">';
+		str += '<img src="'+img+'"/>';
+		str += '</div>';
+		str += '<div class="over"><div class="name">'+name+'</div>';
+		str += '<div class="campaign">'+campaign+'</div>';
+		str += '</div></div>';
 		return str;
 	}
 
