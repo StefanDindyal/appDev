@@ -262,9 +262,11 @@ Move Silently +13
 - 20ft coiled wire
 - Zereza, Cloud Giant | Good at Melee and Magic | Pounding Barthos
 - Talimus
+- Toneco
 - 2 pounds of Giant Snake Meat
 - 5 chunks of hell hound meat
 - 6 hell hound spines
+- Health 24hrs read increase constitution
 
 William:
 HP - 37
@@ -310,4 +312,3 @@ Notes:
 - All crusaders dead...
 - Now in the real cave. A maze.
 - Get look from Facebook.
-
