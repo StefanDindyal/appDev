@@ -234,7 +234,7 @@ Use Rope +12
 Session //////////////////////////////////////////
 
 Abram:
-HP - 66 > 
+HP - 66 > 26
 Arrows - 38
 Madness - 15
 Handle Animal +12
