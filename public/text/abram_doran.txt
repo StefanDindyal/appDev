@@ -266,7 +266,7 @@ Move Silently +13
 - 2 pounds of Giant Snake Meat
 - 5 chunks of hell hound meat
 - 6 hell hound spines
-- Health 24hrs read increase constitution
+- Health Tips for Prime: 24hrs read increase constitution
 
 William:
 HP - 37
