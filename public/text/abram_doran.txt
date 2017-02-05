@@ -15,10 +15,10 @@ HP: 66
 Ability Scores:
 Str: 10 +0
 Dex: 19 +4
-Con: 13 +1
+Con: 16 +3
 Int: 16 +2
 Wis: 17 +2
-Cha: 19 +3
+Cha: 19 +4
 Speed: 30ft
 Init Mod: +3
 Grapple: 6
@@ -232,9 +232,9 @@ Use Psionic Device +3
 Use Rope +12
 
 Session //////////////////////////////////////////
-
+--------------------------------------------------
 Abram:
-HP - 66 > 26
+HP - 66 > 21
 Arrows - 38
 Madness - 15
 Handle Animal +12
@@ -250,23 +250,34 @@ Move Silently +13
 - 1 lvl 3
 - 3 lvl 2
 - 3 lvl 1
+-------------------------------------------------
 - Negotiator +2
+- AC +5
+- Hide +10
+- Move Silent +5
+-------------------------------------------------
 -- 1000p 1088g 1397s
 - Red Idol Ball of Tendrils
 - Purple Idol Tenticles
 - Black Idol Flesh
 - Green Fixed Idol
-- AC +2
-- Hide +5
-- 4 copper, Crossbow 1d6
+-------------------------------------------------
 - 20ft coiled wire
-- Zereza, Cloud Giant | Good at Melee and Magic | Pounding Barthos
+- 50ft rope
+- Cooking Gear
+- 5 Torches | 5 Glow Sticks
+- Potion of Crit Heal 5d 10 +12 | 25% regen limb | 45% chance to addict
+- 2 Flasks of Water from founatin with mother and child
+-------------------------------------------------
 - Talimus
 - Toneco
 - 2 pounds of Giant Snake Meat
 - 5 chunks of hell hound meat
 - 6 hell hound spines
-- Health Tips for Prime: 24hrs read increase constitution
+
+- Health Tips for Prime: 24hrs read increase constitution +3
+
+-------------------------------------------------
 
 William:
 HP - 37
@@ -284,6 +295,8 @@ Personality - Happy
 Reach - 10ft
 Attacks - Bite | +3 | 1d8+1 (Poison) | 20 crit
 Skills - Climb +10 | Spot +4 | Hide +6
+
+-------------------------------------------------
 
 Spirit Abram:
 HP - /
@@ -304,6 +317,8 @@ Can still kill body.
 - Hunger for energy | If I grapple and touch 2d4 HP dmg Siphon
 - Can't talk about the spirit
 
+--------------------------------------------------
+
 Notes:
 - Fana, The Gnome Sorceress.
 - Standing by altar. Orbs seen. Alter of offering. Square intent for an idol. Avoid battle axe. See red hulking figure. Flames engulf me.
@@ -312,3 +327,4 @@ Notes:
 - All crusaders dead...
 - Now in the real cave. A maze.
 - Get look from Facebook.
+- Not a minotaur. doesnt like lightning.
