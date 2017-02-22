@@ -45,7 +45,7 @@
 		str += '<div class="point crit">'+crit+'</div>',
 		str += '<div class="point damage">',
 		str += '<span class="type"><i class="lightning icon"></i></span>',
-		str += '<span class="rolls">'+dmgRoll+'</span>',
+		str += '<span class="rolls">('+dmgRoll+')</span>',
 		str += '<span class="die">'+dmgDie+'</span>',
 		str += '</div>',
 		str += '<div class="point armor"><span class="ac">'+armor+'</span></div>',
