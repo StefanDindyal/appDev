@@ -22,56 +22,70 @@ body {
 	line-height: 20px;
 }
 .weapons {
-
-}
-.weapons ul {
 	padding: 10px;
 }
-.weapons ul .weapon {
+.weapon {
 	position: relative;
 	width: 100%;
-	max-width: 480px;
-	margin: 10px 0;
+	max-width: 320px;
+	margin: 10px auto;
 	padding: 10px;
 	background-color: #666;
+	font-size: 16px;
+	line-height: normal;
 	color: #eee;
+	border-radius: 5px;
+	border: 2px solid #444;
+	box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
 }
-.weapons ul li .point,
-.weapons ul li .copy {
+.weapon .img {
 	display: inline-block;
 	vertical-align: middle;
-	background-color: #444;	
+	width: 48px;
+	height: 48px;
+	background-color: #444;
+	text-align: center;
+	border-radius: 5px;
+	border: 2px solid #222;
 }
-.weapons ul li .point {
-	padding: 5px 10px;
-	margin: 0 5px 0 0;
-}
-.weapons ul li .point.damage,
-.weapons ul li .point.text {
-	display: block;
-	margin-top: 10px;
-}
-.weapons ul li .copy {
-
-}
-.weapons ul li .copy.type {
-	margin-right: 10px;
-	text-transform: capitalize;
-}
-.weapons ul li .img {
-	background-color: #333;
-}
-.weapons ul li .img i {
+.weapon .img i {
+	line-height: 42px;
 	margin: 0;
 }
-.weapons ul li .damage .rolls {
-	margin-right: 5px;
+.weapon .name {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 18px;
+	line-height: normal;
+	padding: 5px 10px;
+	width: 100%;
+	max-width: 214px;
+	color: orange;
 }
-.weapons ul li .ability,
-.weapons ul li .flavor,
-.weapons ul li .hit,
-.weapons ul li .crit,
-.weapons ul li .equip,
-.weapons ul li .armor {
+.weapon .stats {
+	padding-top: 10px;
+	line-height: 22px;
+}
+.weapon .stats .value {
+	font-weight: 700;
+	color: lime;
+}
+.weapon .damage i {
+	margin: 0;
+}
+.weapon .equipped {
+	position: absolute;
+	top: 10px;
+	right: 10px;
 	display: none;
+	font-size: 16px;
+	line-height: 16px;
+	width: 16px;
+	height: 16px;
+}
+.weapon .equipped i {
+	margin: 0;
+}
+.weapon.yes .equipped {
+	display: block;
 }
