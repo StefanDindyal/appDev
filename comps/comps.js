@@ -4,18 +4,51 @@
 	var database = firebase.database();
 	var weapons = database.ref('weapons');
 
-	weapons.on('value', function(snapshot) {
-		// $('.weapons ul').append(weaponList(char));
+	weapons.on('value', function(snapshot) {		
 		console.log(snapshot);
+		$('.weapons ul').html(weaponList(snapshot));
 	});
 
-	function createWeapon(charId, firstname, lastname, campaign, imageUrl) {
-		return firebase.database().ref('weapons/' + charId).set({
-			firstname: firstname,
-			lastname: lastname,
-			campaign: campaign,
-			avatar: imageUrl
+	$('.weapons form').on('submit', function(e){
+		var f = $(this);
+		var name = f.find('input[name="name"]').val() || null;
+		var img = f.find('input[name="img"]').val() || null;
+		var hit = f.find('input[name="hit"]').val() || null;
+		var critRoll = f.find('input[name="crit_roll"]').val() || null;
+		var critMod = f.find('input[name="crit_mod"]').val() || null;
+		var dmgRoll = f.find('input[name="dmg_roll"]').val() || null;
+		var dmgDie = f.find('select[name="dmg_die"]').val() || null;
+		var dmgType = f.find('select[name="dmg_type"]').val() || null;
+		var range = f.find('input[name="range"]').val() || null;
+		var type = f.find('select[name="type"]').val() || null;
+		var armor = f.find('input[name="armor"]').val() || null;
+		var ability = f.find('input[name="ability"]').val() || null;
+		var flavor = f.find('input[name="flavor"]').val() || null;
+		var equipped = 'no';
+		createWeapon(name, img, hit, critRoll, critMod, dmgRoll, dmgDie, dmgType, range, type, armor, ability, flavor, equipped).then(function(){
+			$('.weapons form').get(0).reset();
 		});
+		e.preventDefault();
+	});
+
+	function createWeapon(name, img, hit, critRoll, critMod, dmgRoll, dmgDie, dmgType, range, type, armor, ability, flavor, equipped) {
+		var weaponData = {
+			name: name,
+			img: img,
+			hit: hit,
+			critical: {roll: critRoll, mod: critMod},
+			damage: {rolls: dmgRoll, die: dmgDie, type: dmgType},
+			range: range,
+			type: type,
+			armor: armor,
+			ability: ability,
+			flavor: flavor,
+			equipped: equipped
+		};
+		var newWeapon = weapons.push();
+		var weaponKey = newWeapon.key;
+		console.log('my new shiny id is '+newWeapon.key);
+		return firebase.database().ref('weapons/' + weaponKey).update(weaponData);
 	}
 
 	function equip(data){
@@ -23,30 +56,30 @@
 	}
 
 	function weaponList(data){
-		var weapons = data.weapons,
+		var weapons = data,
 			list = '';
-		for (var i = 0; i < weapons.length; i++) {		
-			var weapon = weaponItemList(weapons[i]);
+		weapons.forEach(function(element, array, index){
+			var weapon = weaponItemList(element);
 			list += weapon;		
-		}
+		});
 		return list;
 	}
 
 	function weaponItemList(data){
-		var name = data.name,
-			img = data.img,
-			hit = data.hit,
-			critRoll = data.critical.roll,
-			critMod = data.critical.mod,
-			dmgRoll = data.damage.rolls,
-			dmgDie = data.damage.die,
-			dmgType = data.damage.type,
-			range = data.range,
-			type = data.type,
-			armor = data.armor,
-			ability = data.ability,
-			flavor = data.flavor,
-			equipped = data.equipped,
+		var name = data.child('name').val(),
+			img = data.child('img').val(),
+			hit = data.child('hit').val(),
+			critRoll = data.child('critical/roll').val(),
+			critMod = data.child('critical/mod').val(),
+			dmgRoll = data.child('damage/rolls').val(),
+			dmgDie = data.child('damage/die').val(),
+			dmgType = data.child('damage/type').val(),
+			range = data.child('range').val(),
+			type = data.child('type').val(),
+			armor = data.child('armor').val(),
+			ability = data.child('ability').val(),
+			flavor = data.child('flavor').val(),
+			equipped = data.child('equipped').val(),
 			str = '';
 		str += '<li class="weapon '+equipped+'"><div class="tile">';		
 		if(img){

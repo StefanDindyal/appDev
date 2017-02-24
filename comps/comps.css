@@ -24,6 +24,13 @@ body {
 .weapons {
 	padding: 10px;
 }
+.weapons .add {
+	padding: 10px;
+	background-color: #444;
+	border: 1px solid #222;
+	border-radius: 5px;
+	color: #eee;	
+}
 .weapon {
 	position: relative;
 	width: 100%;

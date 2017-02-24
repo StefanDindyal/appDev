@@ -16,77 +16,6 @@
         <link rel="stylesheet" href="comps.css"> 
     </head>
     <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Data -->
-        <!-- <script type="text/javascript">
-        	var char = {
-        		'weapons': [
-        			{
-        				'name': 'Thor, The Hammer',
-        				'img': null,
-        				'hit': 3,
-        				'critical': {
-        					'roll': 20,
-        					'mod': 2
-        				},
-        				'damage': {
-        					'rolls': 2,
-        					'die': 'd8',
-        					'type': 'lightning'
-        				},
-        				'range': 100,        				
-        				'type': 'hammer',
-        				'armor': 0,
-        				'ability': 'Lightning Bolt: Deals 4 d8 lightning damage in a radius of 20ft around the caster. Cannot miss. Will save of 20. Can only be used once every 24hrs.',
-        				'flavor': 'A hammer named after the all mighty god of thunder and lighting.',
-        				'equipped': 'no'
-        			},
-        			{
-        				'name': 'Loki, The Staff',
-        				'img': null,
-        				'hit': 5,
-        				'critical': {
-        					'roll': 18,
-        					'mod': 2
-        				},
-        				'damage': {
-        					'rolls': 1,
-        					'die': 'd10',
-        					'type': 'necrotic'
-        				},
-        				'range': 120,        				
-        				'type': 'staff',
-        				'armor': 2,
-        				'ability': 'Feint: See through a persons choices. Gain +20 to insight rolls.',
-        				'flavor': 'A staff of a trickster.',
-        				'equipped': 'no'
-        			},
-        			{
-        				'name': 'Lorence, The Shiv',
-        				'img': null,
-        				'hit': 5,
-        				'critical': {
-        					'roll': 15,
-        					'mod': 3
-        				},
-        				'damage': {
-        					'rolls': 2,
-        					'die': 'd8',
-        					'type': 'piercing'
-        				},
-        				'range': 10,        				
-        				'type': 'dagger',
-        				'armor': 5,
-        				'ability': 'Mortality: You must know your oponents weakness to deal damage. Rolls of 15 or higher reveal weakness. If you confirm the hit, you may choose to deal half damage as true damage.',
-        				'flavor': 'A blade of an old woe.',
-        				'equipped': 'no'
-        			}
-        		]
-        	};
-        </script> -->
 
         <!-- Add your site or application content here -->
         <div id="comps">
@@ -119,6 +48,72 @@
         			<div class="slot offhand"></div>
 
         		</div>
+
+                <div class="add"><span>+ Add Weapon</span></div>
+                <div class="form">
+                    <!-- {
+                        'name': 'Lorence, The Shiv',
+                        'img': null,
+                        'hit': 5,
+                        'critical': {
+                            'roll': 15,
+                            'mod': 3
+                        },
+                        'damage': {
+                            'rolls': 2,
+                            'die': 'd8',
+                            'type': 'piercing'
+                        },
+                        'range': 10,                        
+                        'type': 'dagger',
+                        'armor': 5,
+                        'ability': 'Mortality: You must know your oponents weakness to deal damage. Rolls of 15 or higher reveal weakness. If you confirm the hit, you may choose to deal half damage as true damage.',
+                        'flavor': 'A blade of an old woe.',
+                        'equipped': 'no'
+                    } -->
+                    <form>
+                        <div><input type="text" name="name" value="" placeholder="Name" required></div>
+                        <div><label for="thumb">Thumbnail</label>
+                        <input type="file" name="thumb" id="thumb" accept="image/*"></div>
+                        <div><input type="text" name="hit" value="" placeholder="Weapon Bonus" required></div>
+                        <div><input type="text" name="crit_roll" value="" placeholder="Critical Roll" required></div>
+                        <div><input type="text" name="crit_mod" value="" placeholder="Critical Modifier" required></div>
+                        <div><input type="text" name="dmg_roll" value="" placeholder="Damage Roll" required></div>
+                        <div><select name="dmg_die" required>
+                            <option value="">Damage Dice</option>
+                            <option value="d4">d4</option>
+                            <option value="d6">d6</option>
+                            <option value="d8">d8</option>
+                            <option value="d10">d10</option>
+                            <option value="d20">d20</option>
+                            <option value="d100">d100</option>                            
+                        </select></div>
+                        <div><select name="dmg_type" required>
+                            <option value="">Damage Type</option>
+                            <option value="lightning">Lightning</option>
+                            <option value="frost">Frost</option>
+                            <option value="fire">Fire</option>
+                            <option value="blunt">Blunt</option>
+                            <option value="pierce">Pierce</option>
+                            <option value="necro">Necro</option>
+                            <option value="poison">Poison</option>
+                            <option value="arcane">Arcane</option>
+                            <option value="dark">Dark</option>
+                        </select></div>
+                        <div><input type="text" name="range" value="" placeholder="Range" required></div>
+                        <div><select name="type" required>
+                            <option value="">Weapon Type</option>
+                            <option value="dagger">Dagger</option>
+                            <option value="hammer">Hammer</option>
+                            <option value="mace">Mace</option>
+                            <option value="sword">Sword</option>
+                        </select></div>
+                        <div><input type="text" name="armor" value="" placeholder="Armor Class" required></div>
+                        <div><textarea name="ability" value="" placeholder="Ability" required></textarea></div>
+                        <div><textarea name="flavor" value="" placeholder="Flavor Text" required></textarea></div>
+                        <div><input type="submit" name="submit" value="Submit"></div>                        
+                    </form>
+                </div>
 
         		<ul></ul>
         	</div>
