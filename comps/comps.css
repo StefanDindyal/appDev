@@ -87,6 +87,9 @@ body {
 	font-weight: 700;
 	padding-top: 10px;
 }
+.weapons .form {
+	display: none;
+}
 .weapon {
 	position: relative;
 	width: 100%;
