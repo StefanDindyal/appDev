@@ -4,33 +4,6 @@
 	var database = firebase.database();
 	var weapons = database.ref('weapons');
 
-	weapons.on('value', function(snapshot) {		
-		console.log(snapshot);
-		$('.weapons ul').html(weaponList(snapshot));
-	});
-
-	$('.weapons form').on('submit', function(e){
-		var f = $(this);
-		var name = f.find('input[name="name"]').val() || null;
-		var img = f.find('input[name="img"]').val() || null;
-		var hit = f.find('input[name="hit"]').val() || null;
-		var critRoll = f.find('input[name="crit_roll"]').val() || null;
-		var critMod = f.find('input[name="crit_mod"]').val() || null;
-		var dmgRoll = f.find('input[name="dmg_roll"]').val() || null;
-		var dmgDie = f.find('select[name="dmg_die"]').val() || null;
-		var dmgType = f.find('select[name="dmg_type"]').val() || null;
-		var range = f.find('input[name="range"]').val() || null;
-		var type = f.find('select[name="type"]').val() || null;
-		var armor = f.find('input[name="armor"]').val() || null;
-		var ability = f.find('input[name="ability"]').val() || null;
-		var flavor = f.find('input[name="flavor"]').val() || null;
-		var equipped = 'no';
-		createWeapon(name, img, hit, critRoll, critMod, dmgRoll, dmgDie, dmgType, range, type, armor, ability, flavor, equipped).then(function(){
-			$('.weapons form').get(0).reset();
-		});
-		e.preventDefault();
-	});
-
 	function createWeapon(name, img, hit, critRoll, critMod, dmgRoll, dmgDie, dmgType, range, type, armor, ability, flavor, equipped) {
 		var weaponData = {
 			name: name,
@@ -79,15 +52,26 @@
 			armor = data.child('armor').val(),
 			ability = data.child('ability').val(),
 			flavor = data.child('flavor').val(),
-			equipped = data.child('equipped').val(),
+			equipped = data.child('equipped/status').val(),
+			hand = data.child('equipped/hand').val(),
+			id= data.key,
 			str = '';
-		str += '<li class="weapon '+equipped+'"><div class="tile">';		
+		str += '<li data-id="'+id+'" class="weapon '+equipped+' '+hand+'">',
+		str += '<div class="options"><div class="btns"><div class="cell">',
+		str += '<button type="button" class="equip">Equip</button>',
+		str += '<button type="button" class="edit">Edit</button>',
+		str += '<button type="button" class="delete">Delete</button>',
+		str += '</div></div></div>';
+		str += '<div class="tile">';
+		str += '<div class="attr">';	
 		if(img){
 			str += '<div class="point img"><img src="'+img+'" alt="'+name+'"/></div>';	
 		} else {
 			str += '<div class="point img"><i class="upload icon"></i></div>';
 		}		
 		str += '<div class="point name"><h1>'+name+'</h1></div>',
+		str += '<div class="equipped"><i class="linkify icon"></i></div>',
+		str += '</div>',
 		str += '<div class="stats">',
 		str += '<div class="point hit">Weapon Bonus: <span class="value">+'+hit+'</span></div>',
 		str += '<div class="point crit">Critical Roll: <span class="value">'+critRoll+'</span></div>',
@@ -97,8 +81,7 @@
 		str += '<span class="rolls">'+dmgRoll+' </span>',
 		str += '<span class="die">'+dmgDie+'</span></span>',
 		str += '</div>',
-		str += '<div class="point armor">Armor Bonus: <span class="value"><span class="ac">+'+armor+'</span></span></div>',
-		str += '<div class="equipped"><i class="linkify icon"></i></div>',
+		str += '<div class="point armor">Armor Bonus: <span class="value"><span class="ac">+'+armor+'</span></span></div>',		
 		str += '</div></div></li>';
 		return str;
 	}
@@ -143,5 +126,65 @@
 		str += '</div></li>';
 		return str;
 	}
+
+	function removeWeapData(weapId) {
+		return firebase.database().ref('weapons/' + weapId).set(null);
+	}
+
+	// Events
+
+	weapons.on('value', function(snapshot) {		
+		console.log(snapshot);
+		$('.weapons ul').html(weaponList(snapshot));
+	});
+
+	$(document).on('click', '.weapon', function(){
+		var el = $(this);
+		$('.weapon').removeClass('click');
+		el.addClass('click');
+	});
+
+	$(document).on('click', '.weapon .delete', function(){
+		var el = $(this);
+		var id = el.parents('.weapon').attr('data-id');
+		console.log(id);
+		removeWeapData(id).then(function(){
+			$('.weapon').removeClass('click');	
+		})			
+	});
+
+	$('.weapons .add').on('click', function(){
+		var form = $('.weapons .form');
+		form.fadeIn(300);
+	})
+
+	$('.weapons .form .close').on('click', function(){
+		var form = $('.weapons .form');
+		form.fadeOut(300);
+	})
+
+	$('.weapons form').on('submit', function(e){
+		var f = $(this);
+		var name = f.find('input[name="name"]').val() || null;
+		var img = f.find('input[name="img"]').val() || null;
+		var hit = f.find('input[name="hit"]').val() || null;
+		var critRoll = f.find('input[name="crit_roll"]').val() || null;
+		var critMod = f.find('input[name="crit_mod"]').val() || null;
+		var dmgRoll = f.find('input[name="dmg_roll"]').val() || null;
+		var dmgDie = f.find('select[name="dmg_die"]').val() || null;
+		var dmgType = f.find('select[name="dmg_type"]').val() || null;
+		var range = f.find('input[name="range"]').val() || null;
+		var type = f.find('select[name="type"]').val() || null;
+		var armor = f.find('input[name="armor"]').val() || null;
+		var ability = f.find('input[name="ability"]').val() || null;
+		var flavor = f.find('input[name="flavor"]').val() || null;
+		var equipped = {'status':'no', 'hand': 'none'};
+		createWeapon(name, img, hit, critRoll, critMod, dmgRoll, dmgDie, dmgType, range, type, armor, ability, flavor, equipped).then(function(){
+			var form = $('.weapons .form');
+			form.find('form').get(0).reset();			
+			form.fadeIn(300);
+		});
+		e.preventDefault();
+	});
 
 })(jQuery);
